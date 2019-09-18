@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@drawable/grad_bg"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context=".MainActivity"
+    android:fitsSystemWindows="true"
+    android:id="@+id/relative_layout"
+    >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_centerInParent="true">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imgView_logo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_person_black_24dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"/>
+
+        <RelativeLayout
+            android:id="@+id/rellay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_below="@id/imgView_logo">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textSize="30sp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/roboto_condensed_bold"/>
+
+            <LinearLayout
+                android:id="@+id/linlay1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_login"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/user_TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="true"
+                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:boxCornerRadiusTopStart="0dp"
+                        app:boxCornerRadiusTopEnd="20dp"
+                        app:boxCornerRadiusBottomStart="20dp"
+                        app:boxCornerRadiusBottomEnd="20dp">
+
+
+                        <android.support.v7.widget.AppCompatEditText
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:id="@+id/user_TextField"
+                            android:inputType="number"
+                            android:hint="Username"
+                            android:fontFamily="@font/roboto_condensed_regular"
+                            android:paddingStart="15dp"
+                            android:paddingEnd="15dp"
+                            android:textColorHint="#FFFFFF"
+                            android:textColor="@color/white"
+                            />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/password_TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="true"
+                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        app:boxCornerRadiusTopStart="0dp"
+                        app:boxCornerRadiusTopEnd="20dp"
+                        app:boxCornerRadiusBottomStart="20dp"
+                        app:boxCornerRadiusBottomEnd="20dp"
+                        app:passwordToggleEnabled="true">
+
+
+                        <android.support.v7.widget.AppCompatEditText
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:id="@+id/password_TextField"
+                            android:inputType="textPassword"
+                            android:hint="Password"
+                            android:fontFamily="@font/roboto_condensed_regular"
+                            android:paddingStart="15dp"
+                            android:paddingEnd="15dp"
+                            android:textColor="@color/white"
+                            />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/login_button"
+                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_below="@id/linlay1"
+                android:layout_marginTop="50dp"
+                android:textAllCaps="false"
+                android:text="Login Now"
+                android:paddingStart="70dp"
+                android:paddingEnd="70dp"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                android:background="@drawable/ripple"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rellay2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:visibility="gone"
+        android:layout_marginBottom="40dp"
+        >
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/website_button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_alignParentStart="true"
+            android:textAllCaps="true"
+            android:text="Website"
+            android:textColor="@color/white"
+            android:background="@drawable/ripple_borderless"
+            />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/rate_button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_alignParentEnd="true"
+            android:textAllCaps="true"
+            android:text="Rate us!"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:background="@drawable/ripple_borderless"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>
