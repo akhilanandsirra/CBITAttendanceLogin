@@ -8,7 +8,7 @@
     android:background="@drawable/grad_bg"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context=".MainActivity"
+    tools:context="akhil.com.attendance.MainActivity"
     android:fitsSystemWindows="true"
     android:id="@+id/relative_layout"
     >
@@ -20,7 +20,7 @@
         android:layout_marginLeft="40dp"
         android:layout_centerInParent="true">
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgView_logo"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -35,7 +35,7 @@
             android:visibility="gone"
             android:layout_below="@id/imgView_logo">
 
-            <android.support.v7.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/user_TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
                         app:boxCornerRadiusBottomEnd="20dp">
 
 
-                        <android.support.v7.widget.AppCompatEditText
+                        <androidx.appcompat.widget.AppCompatEditText
                             android:layout_height="wrap_content"
                             android:layout_width="match_parent"
                             android:id="@+id/user_TextField"
@@ -85,7 +85,7 @@
                             android:textColor="@color/white"
                             />
 
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
@@ -95,7 +95,7 @@
                     android:orientation="vertical"
                     android:layout_marginTop="20dp">
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/password_TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
                         app:passwordToggleEnabled="true">
 
 
-                        <android.support.v7.widget.AppCompatEditText
+                        <androidx.appcompat.widget.AppCompatEditText
                             android:layout_height="wrap_content"
                             android:layout_width="match_parent"
                             android:id="@+id/password_TextField"
@@ -122,14 +122,14 @@
                             android:textColor="@color/white"
                             />
 
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
 
             </LinearLayout>
 
-            <android.support.v7.widget.AppCompatButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/login_button"
                 android:layout_height="40dp"
                 android:layout_width="wrap_content"
@@ -143,6 +143,8 @@
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/white"
                 android:background="@drawable/ripple"/>
+
+
         </RelativeLayout>
 
     </RelativeLayout>
@@ -158,7 +160,7 @@
         android:layout_marginBottom="40dp"
         >
 
-        <android.support.v7.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/website_button"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
@@ -170,7 +172,7 @@
             android:background="@drawable/ripple_borderless"
             />
 
-        <android.support.v7.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/rate_button"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
