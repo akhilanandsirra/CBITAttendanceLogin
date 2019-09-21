@@ -28,5 +28,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
     implementation 'com.github.john990:WaveView:v0.9'
     implementation 'org.jsoup:jsoup:1.12.1'
-    implementation 'br.com.simplepass:loading-button-android:2.1.5'
+    implementation 'com.airbnb.android:lottie:3.0.7'
 }

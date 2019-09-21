@@ -1,26 +1,20 @@
 package akhil.com.attendance;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.john.waveview.WaveView;
+public class WaitingActivity extends AppCompatActivity {
 
-public class ResultActivity extends AppCompatActivity {
-    WaveView waveView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result);
+        setContentView(R.layout.activity_waiting);
 
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-
-        waveView=(WaveView)findViewById(R.id.wave_view);
-        ProgressBarAnimation anim = new ProgressBarAnimation(waveView, 0, 80);
-        anim.setDuration(1000);
-        waveView.startAnimation(anim);
 
     }
 }

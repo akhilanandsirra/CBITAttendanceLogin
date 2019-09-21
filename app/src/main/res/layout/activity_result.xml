@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/grad_bg"
     android:fitsSystemWindows="true"
-    tools:context=".ResultActivity">
+    tools:context="akhil.com.attendance.ResultActivity">
 
     <com.john.waveview.WaveView
         android:id="@+id/wave_view"
