@@ -29,4 +29,5 @@ dependencies {
     implementation 'com.github.john990:WaveView:v0.9'
     implementation 'org.jsoup:jsoup:1.12.1'
     implementation 'com.airbnb.android:lottie:3.0.7'
+    implementation 'com.github.mohammadatif:Animatoo:master'
 }
