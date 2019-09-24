@@ -22,7 +22,6 @@ import java.io.IOException;
 
 public class WaitingActivity extends AppCompatActivity {
     String at;
-    WaveView waveView;
     AppCompatTextView percentage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +31,6 @@ public class WaitingActivity extends AppCompatActivity {
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         new Content().execute();
-
-
     }
 
     private class Content extends AsyncTask<Void, Void, Void> {
@@ -49,12 +46,10 @@ public class WaitingActivity extends AppCompatActivity {
                 //Connect to the website
                 Document document = Jsoup.connect("https://erp.cbit.org.in/?__LASTFOCUS=&__EVENTTARGET=&__EVENTARGUMENT=&__VIEWSTATE=%2FwEPDwUKMTExMDk3MjkwOA9kFgICAQ9kFhQCBQ8PFgIeB1Zpc2libGVoZGQCCQ8PFgIfAGdkZAILDw8WBB4ISW1hZ2VVcmwFRH5cRVJQXEFkbWluXFN0dWRlbnRQaG90b3MuYXNweD9TdHVkSWQ9NzUwMiZDb2xDb2RlPTAwMDEmR3JwQ29kZT1DQklUHwBnZGQCDw8PFgYeBFRleHQFDDE2MDExNzczNzA4OR4HRW5hYmxlZGgfAGhkZAIRDw8WAh8AZ2RkAhMPDxYCHwJlZGQCFQ8PFgIfAGhkZAIXDw8WAh8AZ2RkAhsPDxYCHwBnZGQCHQ8PFgIfAGdkZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WAgUHSW1nQmFjawUMSW1nVXNlclBob3RvK%2BH5kGAx0PSv8AMiMnYMoI4uyXiMiYM6TasaCds24ME%3D&__VIEWSTATEGENERATOR=C2EE9ABB&__EVENTVALIDATION=%2FwEdAAm3b5ZXqJt8X%2FJx%2BD4jDeHOBjpuGLkudYNkCAonVyADt%2B5PVNfdHmla7NuBu7%2FwrMMyrNXnRHAQ0i9tgVPzigLD0vlayIibJlZm2HEdhP9alnY2%2BMc6SrnAqio3oCKbxYY85pbWlDO2hADfoPXD%2F5tdKHfjJrmhuOJtNRn2ZOc35Gp8QtNk8V97ULE6OJFh19NI2AIBKsDmJMvEpIUF8lCQZyBbrZ31FlP1tUsnDSExTg%3D%3D&txtPassword=8055&btnSubmit=Submit").get();
                 Element attendance = document.getElementById("ctl00_cpStud_lblTotalPercentage");
-                at=attendance.text();
-                at=at.replaceAll("[^\\.0123456789]","");
-
+                at=attendance.html();
 
             } catch (IOException e) {
-                e.printStackTrace();
+                Toast.makeText(WaitingActivity.this, "No Internet Connection", Toast.LENGTH_LONG).show();
             }
             return null;
         }
