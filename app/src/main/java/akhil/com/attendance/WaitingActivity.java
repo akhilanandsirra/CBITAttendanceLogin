@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ import java.io.IOException;
 public class WaitingActivity extends AppCompatActivity {
     String at;
     AppCompatTextView percentage;
+    private Content Task;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,7 @@ public class WaitingActivity extends AppCompatActivity {
         percentage=(AppCompatTextView) findViewById(R.id.percent);
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        new Content().execute();
+        Task= (Content) new Content().execute();
     }
 
     private class Content extends AsyncTask<Void, Void, Void> {
@@ -70,5 +72,12 @@ public class WaitingActivity extends AppCompatActivity {
         Intent intent=new Intent(this, ResultActivity.class);
         intent.putExtra("percentage",at);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Task.cancel(true);
+        super.onBackPressed();
+        this.finish();
     }
 }
