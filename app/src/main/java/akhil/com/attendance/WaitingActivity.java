@@ -64,7 +64,6 @@ public class WaitingActivity extends AppCompatActivity {
             Toast.makeText(WaitingActivity.this, at, Toast.LENGTH_LONG).show();
             float percent=Float.valueOf(at);
             openResultativity();
-            //percentage.setText(at);
         }
     }
 
