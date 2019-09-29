@@ -71,6 +71,7 @@ public class WaitingActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Task.cancel(true);
+        Toast.makeText(WaitingActivity.this, "Process Aborted", Toast.LENGTH_LONG).show();
         super.onBackPressed();
         this.finish();
     }
