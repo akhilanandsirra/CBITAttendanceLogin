@@ -68,7 +68,8 @@
                         app:boxCornerRadiusBottomEnd="20dp"
                         app:boxCornerRadiusBottomStart="20dp"
                         app:boxCornerRadiusTopEnd="20dp"
-                        app:boxCornerRadiusTopStart="0dp">
+                        app:boxCornerRadiusTopStart="0dp"
+                        >
 
 
                         <androidx.appcompat.widget.AppCompatEditText
@@ -105,7 +106,8 @@
                         app:boxCornerRadiusBottomStart="20dp"
                         app:boxCornerRadiusTopEnd="20dp"
                         app:boxCornerRadiusTopStart="0dp"
-                        app:passwordToggleEnabled="true">
+                        app:passwordToggleEnabled="true"
+                        app:errorEnabled="true">
 
 
                         <androidx.appcompat.widget.AppCompatEditText
