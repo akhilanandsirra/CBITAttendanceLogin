@@ -43,8 +43,12 @@ public class WaitingActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             try {
                 //Connect to the website
+                Intent intent=getIntent();
 
-                String url="https://erp.cbit.org.in/?__LASTFOCUS=&__EVENTTARGET=&__EVENTARGUMENT=&__VIEWSTATE=%2FwEPDwUKMTExMDk3MjkwOA9kFgICAQ9kFgICBQ8PFgIeB1Zpc2libGVoZGRkApSadXV8hBd7qi9M9MQf24gQFo1JDdpv3rqIRSVoR5Y%3D&__VIEWSTATEGENERATOR=C2EE9ABB&__EVENTVALIDATION=%2FwEdAAUo8HF9hHYWKGGF3Et0JGNxBjpuGLkudYNkCAonVyADt%2B5PVNfdHmla7NuBu7%2FwrMNjemWCTRgEB59HPczIGVNwgWOkgugWB5Cq9dYD7toQNEwZfb2PCk9YCZQ7UhXsjSWufILYgZp8zPh7f7XDtu2a&txtUserName=160117737089&btnNext=Next";
+                String UserName=intent.getStringExtra("Username");
+                String Password=intent.getStringExtra("Password");
+
+                String url="https://erp.cbit.org.in/?__LASTFOCUS=&__EVENTTARGET=&__EVENTARGUMENT=&__VIEWSTATE=%2FwEPDwUKMTExMDk3MjkwOA9kFgICAQ9kFgICBQ8PFgIeB1Zpc2libGVoZGRkApSadXV8hBd7qi9M9MQf24gQFo1JDdpv3rqIRSVoR5Y%3D&__VIEWSTATEGENERATOR=C2EE9ABB&__EVENTVALIDATION=%2FwEdAAUo8HF9hHYWKGGF3Et0JGNxBjpuGLkudYNkCAonVyADt%2B5PVNfdHmla7NuBu7%2FwrMNjemWCTRgEB59HPczIGVNwgWOkgugWB5Cq9dYD7toQNEwZfb2PCk9YCZQ7UhXsjSWufILYgZp8zPh7f7XDtu2a&txtUserName="+UserName+"&btnNext=Next";
                 String url2="https://erp.cbit.org.in/";
                 Connection.Response loginForm = Jsoup.connect(url)
                         .method(Connection.Method.GET)
@@ -67,7 +71,7 @@ public class WaitingActivity extends AppCompatActivity {
 
                 Document document = Jsoup.connect(url2)
                         .data("cookieexists", "false")
-                        .data("txtPassword","8055")
+                        .data("txtPassword",Password)
                         .data("btnSubmit","Submit")
                         .data("__LASTFOCUS",lastFocus)
                         .data("__EVENTTARGET",eventTarget)

@@ -29,7 +29,6 @@ public class ResultActivity extends AppCompatActivity {
         ProgressBarAnimation anim = new ProgressBarAnimation(waveView, 0, percent);
         anim.setDuration(1000);
         waveView.startAnimation(anim);
-
         Result.setText(String.format(getString(R.string.percentage),percent));
     }
 
