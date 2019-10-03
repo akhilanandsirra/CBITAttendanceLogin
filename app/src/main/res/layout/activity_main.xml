@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/roboto_condensed_bold"
-                android:text="Login"
+                android:text="CBIT Student Login"
                 android:textColor="@color/white"
                 android:textSize="30sp" />
 

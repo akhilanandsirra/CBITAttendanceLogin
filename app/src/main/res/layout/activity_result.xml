@@ -54,8 +54,8 @@
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="42sp" />
-            </LinearLayout>
 
+            </LinearLayout>
 
         </LinearLayout>
 
