@@ -84,7 +84,7 @@ public class WaitingActivity extends AppCompatActivity {
                         .get();
 
                 Element attendance = document.getElementById("ctl00_cpStud_lblTotalPercentage");
-                at=attendance.text();
+                at=attendance.html();
                 at=at.replaceAll("[^\\.0123456789]","");
 
             } catch (IOException e) {
