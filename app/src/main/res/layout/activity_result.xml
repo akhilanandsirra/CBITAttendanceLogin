@@ -27,6 +27,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/LinearLayout1"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="100dp"
             android:orientation="vertical">
@@ -38,7 +39,8 @@
                 android:fontFamily="@font/roboto_condensed_bold"
                 android:text="Your Attendance is"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,15 +54,514 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_condensed_light"
                     android:textAlignment="center"
+                    android:gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="42sp" />
+                    android:textSize="42sp"
+                    />
 
             </LinearLayout>
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/LinearLayout2"
+            android:layout_below="@id/LinearLayout1"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/classes1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:gravity="center"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/classes2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/classes1"
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="5dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/LinearLayout3"
+            android:layout_below="@id/LinearLayout2"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="35dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Table1"
+                android:orientation="horizontal"
+                >
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    >
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/heading1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_condensed_bold"
+                        android:textSize="18sp"
+                        android:text="Today's Time Table"
+                        android:gravity="center"
+                        android:layout_marginBottom="25dp"
+                        />
+
+                    <TableRow>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/row1column1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_condensed_bold"
+                            android:gravity="center"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            android:text="Day"
+                            android:textSize="16sp"
+                            />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/row1column2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_condensed_regular"
+                            android:textSize="16sp"
+                            android:text="10/4/2019\n(Fri)"
+                            android:gravity="center"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/row2column1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_condensed_bold"
+                            android:textSize="16sp"
+                            android:text="1\n(09:10-10:10)"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/row2column2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_condensed_regular"
+                            android:gravity="center"
+                            android:text="OS"
+                            android:textSize="16sp"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/row3column1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_condensed_bold"
+                            android:textSize="16sp"
+                            android:text="2\n(10:10-11:10)"
+                            android:gravity="center"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/row3column2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_condensed_regular"
+                            android:gravity="center"
+                            android:text="TOA"
+                            android:textSize="16sp"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/row4column1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_condensed_bold"
+                            android:textSize="16sp"
+                            android:text="3\n(11:15-12:15)"
+                            android:gravity="center"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/row4column2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_condensed_regular"
+                            android:textSize="16sp"
+                            android:text="PP"
+                            android:gravity="center"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/row5column1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_condensed_bold"
+                            android:textSize="16sp"
+                            android:text="4\n(01:15-02:15)"
+                            android:gravity="center"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/row5column2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_condensed_regular"
+                            android:textSize="16sp"
+                            android:text="WT"
+                            android:gravity="center"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/row6column1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_condensed_bold"
+                            android:textSize="16sp"
+                            android:text="5\n(02:15-03:15)"
+                            android:gravity="center"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/row6column2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_condensed_regular"
+                            android:textSize="16sp"
+                            android:text="DBMS"
+                            android:gravity="center"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/row7column1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_condensed_bold"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:text="6\n(03:20-04:20)"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/row7column2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_condensed_regular"
+                            android:textSize="16sp"
+                            android:text="SE"
+                            android:gravity="center"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                    </TableRow>
+
+                </TableLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Table2"
+                android:layout_marginStart="10dp"
+                android:orientation="horizontal"
+                >
+
+
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    >
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/heading2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_condensed_bold"
+                        android:textSize="18sp"
+                        android:text="Datewise Attendance"
+                        android:gravity="center"
+                        android:layout_marginBottom="25dp"
+                        />
+
+                    <TableRow>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/table2row1column1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_condensed_bold"
+                            android:gravity="center"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            android:text="Day"
+                            android:textSize="16sp"
+                            />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/table2row1column2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_condensed_regular"
+                            android:textSize="16sp"
+                            android:text="10/4/2019\n(Fri)"
+                            android:gravity="center"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/table2row2column1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_condensed_bold"
+                            android:textSize="16sp"
+                            android:text="1\n(09:10-10:10)"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/table2row2column2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_condensed_regular"
+                            android:gravity="center"
+                            android:text="P"
+                            android:textSize="16sp"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/table2row3column1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_condensed_bold"
+                            android:textSize="16sp"
+                            android:text="2\n(10:10-11:10)"
+                            android:gravity="center"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/table2row3column2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_condensed_regular"
+                            android:gravity="center"
+                            android:text="P"
+                            android:textSize="16sp"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/table2row4column1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_condensed_bold"
+                            android:textSize="16sp"
+                            android:text="3\n(11:15-12:15)"
+                            android:gravity="center"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/table2row4column2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_condensed_regular"
+                            android:gravity="center"
+                            android:text="P"
+                            android:textSize="16sp"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/table2row5column1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_condensed_bold"
+                            android:textSize="16sp"
+                            android:text="4\n(01:15-02:15)"
+                            android:gravity="center"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/table2row5column2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_condensed_regular"
+                            android:gravity="center"
+                            android:text="A"
+                            android:textSize="16sp"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/table2row6column1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_condensed_bold"
+                            android:textSize="16sp"
+                            android:text="5\n(02:15-03:15)"
+                            android:gravity="center"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/table2row6column2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_condensed_regular"
+                            android:gravity="center"
+                            android:text="P"
+                            android:textSize="16sp"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/table2row7column1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_condensed_bold"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:text="6\n(03:20-04:20)"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/table2row7column2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto_condensed_regular"
+                            android:gravity="center"
+                            android:text="P"
+                            android:textSize="16sp"
+                            android:background="@drawable/cell"
+                            android:padding="3dp"
+                            />
+
+                    </TableRow>
+
+                </TableLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </RelativeLayout>
-
 
 </RelativeLayout>
