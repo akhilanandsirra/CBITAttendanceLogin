@@ -15,16 +15,21 @@ import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
+import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 
 public class WaitingActivity extends AppCompatActivity {
-    String at;
+    String at,classesHeld,classesAttended;
+    ArrayList<String> classesTable = new ArrayList<>();
     AppCompatTextView percentage;
+    ArrayList<String> timeTable = new ArrayList<>();
+    ArrayList<String> dayWiseTable = new ArrayList<>();
     private Content Task;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +95,39 @@ public class WaitingActivity extends AppCompatActivity {
                     at=attendance.html();
                     at=at.replaceAll("[^\\.0123456789]","");
 
+                Element table3=document.select("table").get(19);
+                Elements rows3 = table3.select("tr");
+                Element row = rows3.get(rows3.size()-1);
+                Elements cols = row.select("td");
+                for(int i=3;i<5;i++)
+                    classesTable.add(cols.get(i).text());
+                System.out.println(classesTable);
+                classesHeld=classesTable.get(0);
+                classesAttended=classesTable.get(1);
+
+                //Table1 Details
+
+                Element timetable=document.select("table").get(17);
+                Elements rows = timetable.select("tr");
+                for (int i = 1; i < rows.size(); i++) { //first row is the col names so skip it.
+                    Element rowTime = rows.get(i);
+                    Elements colsTime = rowTime.select("td");
+                    for(int j=0;j<colsTime.size();j++)
+                        timeTable.add(colsTime.get(j).text());
+                }
+
+                //dayWise details
+
+                Element daywisetable=document.select("table").get(24);
+                Elements rows2 = daywisetable.select("tr");
+
+                for (int i = 1; i < rows2.size(); i++) { //first row is the col names so skip it.
+                    Element rowDaywise = rows2.get(i);
+                    Elements colsDaywise = rowDaywise.select("tr");
+                    for(int j=0;j<colsDaywise.size();j++)
+                        dayWiseTable.add(colsDaywise.get(j).text());
+                }
+
             }
             catch(NullPointerException e){
 
@@ -142,6 +180,10 @@ public class WaitingActivity extends AppCompatActivity {
     public void openResultativity() {
         Intent intent=new Intent(this, ResultActivity.class);
         intent.putExtra("percentage",at);
+        intent.putExtra("classes1",classesHeld);
+        intent.putExtra("classes2",classesAttended);
+        intent.putStringArrayListExtra("timetable",timeTable);
+        intent.putStringArrayListExtra("daywisetable",dayWiseTable);
         startActivity(intent);
     }
 

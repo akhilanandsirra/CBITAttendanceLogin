@@ -3,4 +3,6 @@
     <string name="percentage">%.2f%%</string>
     <string name="attendedString">Classes Attended: %s</string>
     <string name="totalString">Classes Held: %s</string>
+    <string name="table1Daydate">%s\n(%s)</string>
+    <string name="table2Daydate">%s\n(%S)</string>
 </resources>
