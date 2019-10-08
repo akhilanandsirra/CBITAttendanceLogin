@@ -94,12 +94,12 @@ public class ResultActivity extends AppCompatActivity {
         }
 
         else{
-            String periodString1[]=timeTable.get(1).split(" ");
-            String periodString2[]=timeTable.get(2).split(" ");
-            String periodString3[]=timeTable.get(3).split(" ");
-            String periodString4[]=timeTable.get(4).split(" ");
-            String periodString5[]=timeTable.get(5).split(" ");
-            String periodString6[]=timeTable.get(6).split(" ");
+            String periodString1[]=timeTable.get(1).split("[\\(.*\\)]");
+            String periodString2[]=timeTable.get(2).split("[\\(.*\\)]");
+            String periodString3[]=timeTable.get(3).split("[\\(.*\\)]");
+            String periodString4[]=timeTable.get(4).split("[\\(.*\\)]");
+            String periodString5[]=timeTable.get(5).split("[\\(.*\\)]");
+            String periodString6[]=timeTable.get(6).split("[\\(.*\\)]");
 
             dayDate.setText(String.format(getString(R.string.table1Daydate),date,timeTable.get(0)));
             period1.setText(Arrays.asList(periodString1).get(0));
@@ -114,7 +114,7 @@ public class ResultActivity extends AppCompatActivity {
 
         String dayStatus[] = dayWiseTable.get(0).split(" ");
 
-        String daydateStatus[]=(Arrays.asList(dayStatus).get(0)).split("[\\(.*\\)]");
+        String daydateStatus[]=Arrays.asList(dayStatus).get(0).split("[\\(.*\\)]");
 
         dayDateStatus.setText(String.format(getString(R.string.table1Daydate),Arrays.asList(daydateStatus).get(0),Arrays.asList(daydateStatus).get(1).toUpperCase()));
         period1Status.setText(Arrays.asList(dayStatus).get(1));

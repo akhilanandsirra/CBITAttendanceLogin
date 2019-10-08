@@ -81,6 +81,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:gravity="center"
+                android:text="@string/attendedString"
                 />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -93,6 +94,7 @@
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="18sp"
+                android:text="@string/totalString"
                 android:layout_marginTop="5dp"
                 />
 
