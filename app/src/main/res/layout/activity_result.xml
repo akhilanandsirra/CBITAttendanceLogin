@@ -342,8 +342,6 @@
                 android:orientation="horizontal"
                 >
 
-
-
                 <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -563,6 +561,42 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/Options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="30dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/websiteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/ripple_borderless"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Website"
+                android:textAllCaps="true"
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/calculatorButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/ripple_borderless"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Calculator"
+                android:textAllCaps="true"
+                android:textColor="@color/black" />
+
+        </RelativeLayout>
+
 
     </RelativeLayout>
 

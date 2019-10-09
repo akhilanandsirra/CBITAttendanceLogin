@@ -1,15 +1,30 @@
 package akhil.com.attendance;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
+import com.airbnb.lottie.animation.content.Content;
 import com.john.waveview.WaveView;
 
+import org.jsoup.Connection;
+import org.jsoup.HttpStatusException;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -25,7 +40,9 @@ public class ResultActivity extends AppCompatActivity {
             dayDateStatus,period1Status,period2Status,period3Status,period4Status,period5Status,period6Status;
     ArrayList<String> timeTable = new ArrayList<>();
     ArrayList<String> dayWiseTable = new ArrayList<>();
-    String date;
+    String date,originalUrl;
+    AppCompatButton websiteButton;
+    private Content Task;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +77,7 @@ public class ResultActivity extends AppCompatActivity {
 
         String classesHeld=intent.getStringExtra("classes1");
         String classesAttended=intent.getStringExtra("classes2");
+        //originalUrl=intent.getStringExtra("url");
 
         timeTable=intent.getStringArrayListExtra("timetable");
         dayWiseTable=intent.getStringArrayListExtra("daywisetable");
@@ -75,7 +93,7 @@ public class ResultActivity extends AppCompatActivity {
         //getDate
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("M/d/yyyy");
-        String date = df.format(c);
+        date = df.format(c);
 
         SimpleDateFormat sdf = new SimpleDateFormat("EEE");
         Date d = new Date();
@@ -123,6 +141,101 @@ public class ResultActivity extends AppCompatActivity {
         period4Status.setText(Arrays.asList(dayStatus).get(4));
         period5Status.setText(Arrays.asList(dayStatus).get(5));
         period6Status.setText(Arrays.asList(dayStatus).get(6));
+
+        Task= (Content) new Content().execute();
+
+    }
+
+    private class Content extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Toast.makeText(ResultActivity.this, "Initiating Website", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                //Connect to the website
+                Intent intent=getIntent();
+
+                String UserName=intent.getStringExtra("Username");
+                String Password=intent.getStringExtra("Password");
+                String url="https://erp.cbit.org.in/?__LASTFOCUS=&__EVENTTARGET=&__EVENTARGUMENT=&__VIEWSTATE=%2FwEPDwUKMTExMDk3MjkwOA9kFgICAQ9kFgICBQ8PFgIeB1Zpc2libGVoZGRkApSadXV8hBd7qi9M9MQf24gQFo1JDdpv3rqIRSVoR5Y%3D&__VIEWSTATEGENERATOR=C2EE9ABB&__EVENTVALIDATION=%2FwEdAAUo8HF9hHYWKGGF3Et0JGNxBjpuGLkudYNkCAonVyADt%2B5PVNfdHmla7NuBu7%2FwrMNjemWCTRgEB59HPczIGVNwgWOkgugWB5Cq9dYD7toQNEwZfb2PCk9YCZQ7UhXsjSWufILYgZp8zPh7f7XDtu2a&txtUserName="+UserName+"&btnNext=Next";
+                String url2="https://erp.cbit.org.in/";
+                Connection.Response loginForm = Jsoup.connect(url)
+                        .method(Connection.Method.GET)
+                        .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0")
+                        .execute();
+
+                Document doc = loginForm.parse();
+                Element e = doc.select("input[id=__VIEWSTATE]").first();
+                String viewState = e.attr("value");
+                e = doc.select("input[id=__EVENTVALIDATION]").first();
+                String eventValidation = e.attr("value");
+                e = doc.select("input[id=__LASTFOCUS]").first();
+                String lastFocus = e.attr("value");
+                e = doc.select("input[id=__EVENTTARGET]").first();
+                String eventTarget = e.attr("value");
+                e = doc.select("input[id=__VIEWSTATEGENERATOR]").first();
+                String viewstateGenerator = e.attr("value");
+                e = doc.select("input[id=__EVENTARGUMENT]").first();
+                String eventArgument = e.attr("value");
+
+                Document document = Jsoup.connect(url2)
+                        .data("cookieexists", "false")
+                        .data("txtPassword",Password)
+                        .data("btnSubmit","Submit")
+                        .data("__LASTFOCUS",lastFocus)
+                        .data("__EVENTTARGET",eventTarget)
+                        .data("__EVENTARGUMENT",eventArgument)
+                        .data("__VIEWSTATEGENERATOR",viewstateGenerator)
+                        .data("__VIEWSTATE", viewState)
+                        .data("__EVENTVALIDATION", eventValidation)
+                        .cookies(loginForm.cookies())
+                        .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0")
+                        .get();
+
+                originalUrl = Jsoup.connect(url2)
+                        .data("cookieexists", "false")
+                        .data("txtPassword",Password)
+                        .data("btnSubmit","Submit")
+                        .data("__LASTFOCUS",lastFocus)
+                        .data("__EVENTTARGET",eventTarget)
+                        .data("__EVENTARGUMENT",eventArgument)
+                        .data("__VIEWSTATEGENERATOR",viewstateGenerator)
+                        .data("__VIEWSTATE", viewState)
+                        .data("__EVENTVALIDATION", eventValidation)
+                        .followRedirects(true)
+                        .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0") //to follow redirects
+                        .execute().url().toExternalForm();
+            }
+            catch (IOException e) {
+                Toast.makeText(ResultActivity.this, "No Internet Connection", Toast.LENGTH_LONG).show();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Toast.makeText(ResultActivity.this, "Website Initiated", Toast.LENGTH_SHORT).show();
+            websiteButton=(AppCompatButton)findViewById(R.id.websiteButton);
+            websiteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openUrl();
+                }
+            });
+        }
+    }
+
+    public void openUrl(){
+        Toast.makeText(ResultActivity.this, "Opening Website", Toast.LENGTH_LONG).show();
+        Uri uriUrl = Uri.parse(originalUrl);
+        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+        startActivity(launchBrowser);
     }
 
     @Override
