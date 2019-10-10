@@ -112,14 +112,62 @@ public class ResultActivity extends AppCompatActivity {
         }
 
         else{
-            String periodString1[]=timeTable.get(1).split("[\\(.*\\)]");
-            String periodString2[]=timeTable.get(2).split("[\\(.*\\)]");
-            String periodString3[]=timeTable.get(3).split("[\\(.*\\)]");
-            String periodString4[]=timeTable.get(4).split("[\\(.*\\)]");
-            String periodString5[]=timeTable.get(5).split("[\\(.*\\)]");
-            String periodString6[]=timeTable.get(6).split("[\\(.*\\)]");
+            String periodString1[];
+            if(timeTable.size()>1)
+                if (timeTable.get(1).isEmpty())
+                    periodString1= new String[]{"-"};
+                else
+                    periodString1=timeTable.get(1).split("[\\(.*\\)]");
+            else
+                periodString1= new String[]{"-"};
 
-            dayDate.setText(String.format(getString(R.string.table1Daydate),date,timeTable.get(0)));
+            String periodString2[];
+            if(timeTable.size()>2)
+                if (timeTable.get(2).isEmpty())
+                    periodString2= new String[]{"-"};
+                else
+                    periodString2=timeTable.get(2).split("[\\(.*\\)]");
+            else
+                periodString2= new String[]{"-"};
+
+            String periodString3[];
+            if(timeTable.size()>3)
+                if (timeTable.get(3).isEmpty())
+                    periodString3= new String[]{"-"};
+                else
+                    periodString3=timeTable.get(3).split("[\\(.*\\)]");
+            else
+                periodString3= new String[]{"-"};
+
+            String periodString4[];
+            if(timeTable.size()>4)
+                if (timeTable.get(4).isEmpty())
+                    periodString4= new String[]{"-"};
+                else
+                    periodString4=timeTable.get(4).split("[\\(.*\\)]");
+            else
+                periodString4= new String[]{"-"};
+
+            String periodString5[];
+            if(timeTable.size()>5)
+                if (timeTable.get(5).isEmpty())
+                    periodString5= new String[]{"-"};
+                else
+                    periodString5=timeTable.get(5).split("[\\(.*\\)]");
+            else
+                periodString5= new String[]{"-"};
+
+            String periodString6[];
+            if(timeTable.size()>6)
+                if (timeTable.get(6).isEmpty())
+                    periodString6= new String[]{"-"};
+                else
+                    periodString6=timeTable.get(6).split("[\\(.*\\)]");
+            else
+                periodString6= new String[]{"-"};
+
+
+            dayDate.setText(String.format(getString(R.string.table1Daydate),date,timeTable.get(0).toUpperCase()));
             period1.setText(Arrays.asList(periodString1).get(0));
             period2.setText(Arrays.asList(periodString2).get(0));
             period3.setText(Arrays.asList(periodString3).get(0));
@@ -130,17 +178,29 @@ public class ResultActivity extends AppCompatActivity {
 
         //setText for daywisetable
 
-        String dayStatus[] = dayWiseTable.get(0).split(" ");
+        if(dayWiseTable.isEmpty()){
+            dayDateStatus.setText("-\n-");
+            period1Status.setText("-");
+            period2Status.setText("-");
+            period3Status.setText("-");
+            period4Status.setText("-");
+            period5Status.setText("-");
+            period6Status.setText("-");
+        }
 
-        String daydateStatus[]=Arrays.asList(dayStatus).get(0).split("[\\(.*\\)]");
+        else{
+            String dayStatus[] = dayWiseTable.get(0).split(" ");
 
-        dayDateStatus.setText(String.format(getString(R.string.table1Daydate),Arrays.asList(daydateStatus).get(0),Arrays.asList(daydateStatus).get(1).toUpperCase()));
-        period1Status.setText(Arrays.asList(dayStatus).get(1));
-        period2Status.setText(Arrays.asList(dayStatus).get(2));
-        period3Status.setText(Arrays.asList(dayStatus).get(3));
-        period4Status.setText(Arrays.asList(dayStatus).get(4));
-        period5Status.setText(Arrays.asList(dayStatus).get(5));
-        period6Status.setText(Arrays.asList(dayStatus).get(6));
+            String daydateStatus[] = Arrays.asList(dayStatus).get(0).split("[\\(.*\\)]");
+
+            dayDateStatus.setText(String.format(getString(R.string.table1Daydate), Arrays.asList(daydateStatus).get(0), Arrays.asList(daydateStatus).get(1).toUpperCase()));
+            period1Status.setText(Arrays.asList(dayStatus).get(1));
+            period2Status.setText(Arrays.asList(dayStatus).get(2));
+            period3Status.setText(Arrays.asList(dayStatus).get(3));
+            period4Status.setText(Arrays.asList(dayStatus).get(4));
+            period5Status.setText(Arrays.asList(dayStatus).get(5));
+            period6Status.setText(Arrays.asList(dayStatus).get(6));
+        }
 
         Task= (Content) new Content().execute();
 
@@ -232,7 +292,7 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     public void openUrl(){
-        Toast.makeText(ResultActivity.this, "Opening Website", Toast.LENGTH_LONG).show();
+        Toast.makeText(ResultActivity.this, "Opening Website", Toast.LENGTH_SHORT).show();
         Uri uriUrl = Uri.parse(originalUrl);
         Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
         startActivity(launchBrowser);
@@ -240,6 +300,7 @@ public class ResultActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        Task.cancel(true);
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Attendance</string>
+    <string name="app_name">CBIT Student Info</string>
     <string name="percentage">%.2f%%</string>
     <string name="attendedString">Classes Attended: %s</string>
     <string name="totalString">Classes Held: %s</string>
