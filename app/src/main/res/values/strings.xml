@@ -5,4 +5,17 @@
     <string name="totalString">Classes Held: %s</string>
     <string name="table1Daydate">%s\n(%s)</string>
     <string name="table2Daydate">%s\n(%S)</string>
+
+    <string name="classes_conducted">Classes Conducted</string>
+    <string name="desired_percentage">Desired Percentage</string>
+    <string name="classes_attended">Classes Attended</string>
+    <string name="result_percent">Your attendance percentage is %.2f</string>
+    <string name="result_attend">You need to attend %d Classes!</string>
+    <string name="result_bunk">You may bunk %d Classes!</string>
+    <string name="errorInput">PLEASE ENTER ALL THREE FIELDS!</string>
+    <string name="errorNumber">Classes attended is more than Classes conducted!</string>
+    <string name="errorpercent">Desired Percentage must be between 0 and 100!</string>
+    <string name="errorHundred1">You can not achieve 100.00% attendance</string>
+    <string name="errorHundred2">Even if you have not attended 1 or more classes!</string>
+    <string name="sizeError">Size must be lower!</string>
 </resources>

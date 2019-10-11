@@ -41,7 +41,7 @@ public class ResultActivity extends AppCompatActivity {
     ArrayList<String> timeTable = new ArrayList<>();
     ArrayList<String> dayWiseTable = new ArrayList<>();
     String date,originalUrl;
-    AppCompatButton websiteButton;
+    AppCompatButton websiteButton,calculatorButton;
     private Content Task;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -201,6 +201,17 @@ public class ResultActivity extends AppCompatActivity {
             period5Status.setText(Arrays.asList(dayStatus).get(5));
             period6Status.setText(Arrays.asList(dayStatus).get(6));
         }
+
+        calculatorButton=(AppCompatButton)findViewById(R.id.calculatorButton);
+        calculatorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ResultActivity.this, CalculatorActivity.class);
+                //intent.putExtra("Username",userName);
+                //intent.putExtra("Password",Password);
+                startActivity(intent);
+            }
+        });
 
         Task= (Content) new Content().execute();
 
