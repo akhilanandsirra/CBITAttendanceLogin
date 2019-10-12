@@ -162,10 +162,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/calculatorLayout2"
                 android:layout_centerInParent="true"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="20dp"
                 android:text="ENTER ALL THREE FIELDS"
                 android:fontFamily="@font/roboto_condensed_light"
-                android:textSize="16sp"/>
+                android:textSize="20sp"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/resultView2"
@@ -175,7 +175,8 @@
                 android:layout_centerInParent="true"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/roboto_condensed_light"
-                android:textSize="16sp"/>
+                android:textSize="20sp"
+                />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/calculate_button"
@@ -183,7 +184,7 @@
                 android:layout_height="40dp"
                 android:layout_below="@id/resultView2"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/ripple"
                 android:fontFamily="@font/roboto_medium"
                 android:paddingStart="70dp"

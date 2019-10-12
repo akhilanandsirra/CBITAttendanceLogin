@@ -123,11 +123,11 @@ public class CalculatorActivity extends AppCompatActivity {
                         if(desiredpercentage>100||desiredpercentage==0)
                         {
                             result.setText(R.string.errorpercent);
-                            result2.setText(null);
+                            result2.setText(R.string.errorpercent2);
                         }
                         if(classattended>classconducted){
                             result.setText(getString(R.string.errorNumber));
-                            result2.setText(null);}
+                            result2.setText(getString(R.string.errorNumber2));}
                     }
                 }
             }

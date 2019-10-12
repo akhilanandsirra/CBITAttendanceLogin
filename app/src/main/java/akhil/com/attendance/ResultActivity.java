@@ -102,7 +102,7 @@ public class ResultActivity extends AppCompatActivity {
         //setText for table1
         if(timeTable.isEmpty()){
             //if list is empty
-            dayDate.setText(String.format(getString(R.string.table1Daydate),date,dayOfTheWeek));
+            dayDate.setText(String.format(getString(R.string.table1Daydate),date,dayOfTheWeek.toUpperCase()));
             period1.setText("-");
             period2.setText("-");
             period3.setText("-");
