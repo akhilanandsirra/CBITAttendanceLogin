@@ -199,4 +199,21 @@ public class WaitingActivity extends AppCompatActivity {
         super.onBackPressed();
         this.finish();
     }
+
+    @Override
+    protected void onPause() {
+        // TODO Auto-generated method stub
+        super.onPause();
+        Task.cancel(true);
+        this.finish();
+    }
+
+    @Override
+    protected void onStop() {
+        // TODO Auto-generated method stub
+        super.onStop();
+        Task.cancel(true);
+        this.finish();
+    }
+
 }
