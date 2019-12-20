@@ -126,7 +126,7 @@ public class WaitingActivity extends AppCompatActivity {
                 Elements cols = row.select("td");
                 for(int i=3;i<5;i++)
                     classesTable.add(cols.get(i).text());
-                System.out.println(classesTable);
+                //System.out.println(classesTable);
                 classesHeld=classesTable.get(0);
                 classesAttended=classesTable.get(1);
 
