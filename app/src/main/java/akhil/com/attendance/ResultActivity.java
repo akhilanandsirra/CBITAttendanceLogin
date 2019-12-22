@@ -324,8 +324,11 @@ public class ResultActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Task.cancel(true);
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+        super.onBackPressed();
+        this.finish();
+        //for remember me
+        //Intent intent = new Intent(this, MainActivity.class);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        //startActivity(intent);
     }
 }
