@@ -30,6 +30,7 @@ public class WaitingActivity extends AppCompatActivity {
     AppCompatTextView percentage;
     ArrayList<String> timeTable = new ArrayList<>();
     ArrayList<String> dayWiseTable = new ArrayList<>();
+    boolean rememberMe;
     private Content Task;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,7 @@ public class WaitingActivity extends AppCompatActivity {
 
                 UserName=intent.getStringExtra("Username");
                 Password=intent.getStringExtra("Password");
+                rememberMe=intent.getBooleanExtra("Remember",false);
                 String url2="https://erp.cbit.org.in/";
                 Connection.Response loginForm = Jsoup.connect(url2)
                         .method(Connection.Method.GET)
@@ -212,6 +214,7 @@ public class WaitingActivity extends AppCompatActivity {
 
         intent.putExtra("Username",UserName);
         intent.putExtra("Password",Password);
+        intent.putExtra("Remember",rememberMe);
 
         startActivity(intent);
     }

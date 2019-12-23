@@ -42,6 +42,7 @@ public class ResultActivity extends AppCompatActivity {
     ArrayList<String> dayWiseTable = new ArrayList<>();
     String date,originalUrl;
     AppCompatButton websiteButton,calculatorButton;
+    boolean rememberMe;
     private Content Task;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +75,8 @@ public class ResultActivity extends AppCompatActivity {
         Intent intent=getIntent();
         String result=intent.getStringExtra("percentage");
         float percent=Float.valueOf(result);
+
+        rememberMe=intent.getBooleanExtra("Remember",false);
 
         String classesHeld=intent.getStringExtra("classes1");
         String classesAttended=intent.getStringExtra("classes2");
@@ -323,12 +326,17 @@ public class ResultActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Task.cancel(true);
-        super.onBackPressed();
-        this.finish();
-        //for remember me
-        //Intent intent = new Intent(this, MainActivity.class);
-        //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        //startActivity(intent);
+        if(rememberMe){
+            Task.cancel(true);
+            super.onBackPressed();
+            this.finish();
+        }
+        else {
+            Task.cancel(true);
+            //for remember me
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
     }
 }
