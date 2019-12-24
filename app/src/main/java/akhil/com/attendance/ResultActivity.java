@@ -197,12 +197,42 @@ public class ResultActivity extends AppCompatActivity {
             String daydateStatus[] = Arrays.asList(dayStatus).get(0).split("[\\(.*\\)]");
 
             dayDateStatus.setText(String.format(getString(R.string.table1Daydate), Arrays.asList(daydateStatus).get(0), Arrays.asList(daydateStatus).get(1).toUpperCase()));
-            period1Status.setText(Arrays.asList(dayStatus).get(1));
-            period2Status.setText(Arrays.asList(dayStatus).get(2));
-            period3Status.setText(Arrays.asList(dayStatus).get(3));
-            period4Status.setText(Arrays.asList(dayStatus).get(4));
-            period5Status.setText(Arrays.asList(dayStatus).get(5));
-            period6Status.setText(Arrays.asList(dayStatus).get(6));
+            if(Arrays.asList(dayStatus).size()>1) {
+                period1Status.setText(Arrays.asList(dayStatus).get(1));
+            }
+            else{
+                period1Status.setText("-");
+            }
+            if(Arrays.asList(dayStatus).size()>2) {
+                period2Status.setText(Arrays.asList(dayStatus).get(2));
+            }
+            else{
+                period2Status.setText("-");
+            }
+            if(Arrays.asList(dayStatus).size()>3) {
+                period3Status.setText(Arrays.asList(dayStatus).get(3));
+            }
+            else{
+                period3Status.setText("-");
+            }
+            if(Arrays.asList(dayStatus).size()>4) {
+                period4Status.setText(Arrays.asList(dayStatus).get(4));
+            }
+            else{
+                period4Status.setText("-");
+            }
+            if(Arrays.asList(dayStatus).size()>5) {
+                period5Status.setText(Arrays.asList(dayStatus).get(5));
+            }
+            else{
+                period5Status.setText("-");
+            }
+            if(Arrays.asList(dayStatus).size()>6) {
+                period6Status.setText(Arrays.asList(dayStatus).get(6));
+            }
+            else{
+                period6Status.setText("-");
+            }
         }
 
         calculatorButton=(AppCompatButton)findViewById(R.id.calculatorButton);
