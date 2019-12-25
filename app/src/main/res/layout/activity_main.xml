@@ -138,7 +138,7 @@
                         android:layout_height="wrap_content"
                         android:checked="false"
                         android:text="Remember Me"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:fontFamily="@font/roboto_condensed_regular"
                         android:textColor="@color/white"
                         android:theme="@style/CheckboxTheme"
