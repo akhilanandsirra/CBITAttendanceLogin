@@ -2,6 +2,7 @@ package akhil.com.attendance;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Trace;
@@ -122,6 +123,15 @@ public class WaitingActivity extends AppCompatActivity {
                     at=attendance.html();
                     at=at.replaceAll("[^\\.0123456789]","");
 
+                    if(at.isEmpty()){
+                        SharedPreferences loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+                        SharedPreferences.Editor loginPrefsEditor = loginPreferences.edit();
+                        loginPrefsEditor.putBoolean("saveLogin", false);
+                        loginPrefsEditor.clear();
+                        loginPrefsEditor.apply();
+                        throw new Exception("demo");
+                    }
+
                 Element table3=document.select("table").get(19);
                 Elements rows3 = table3.select("tr");
                 Element row = rows3.get(rows3.size()-1);
@@ -191,6 +201,15 @@ public class WaitingActivity extends AppCompatActivity {
 
             catch (IOException e) {
                 Toast.makeText(WaitingActivity.this, "No Internet Connection", Toast.LENGTH_LONG).show();
+            }
+            catch (Exception e) {
+                runOnUiThread(new Runnable(){
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "Percentage not available",Toast.LENGTH_LONG).show();
+                    }
+                });
+                Task.cancel(true);
+                finish();
             }
             return null;
         }

@@ -5,6 +5,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -49,49 +50,48 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        Result=(AppCompatTextView)findViewById(R.id.percent);
-        classAttended=(AppCompatTextView)findViewById(R.id.classes1);
-        classesTotal=(AppCompatTextView)findViewById(R.id.classes2);
+        Result = (AppCompatTextView) findViewById(R.id.percent);
+        classAttended = (AppCompatTextView) findViewById(R.id.classes1);
+        classesTotal = (AppCompatTextView) findViewById(R.id.classes2);
 
-        dayDate=(AppCompatTextView)findViewById(R.id.row1column2);
-        period1=(AppCompatTextView)findViewById(R.id.row2column2);
-        period2=(AppCompatTextView)findViewById(R.id.row3column2);
-        period3=(AppCompatTextView)findViewById(R.id.row4column2);
-        period4=(AppCompatTextView)findViewById(R.id.row5column2);
-        period5=(AppCompatTextView)findViewById(R.id.row6column2);
-        period6=(AppCompatTextView)findViewById(R.id.row7column2);
+        dayDate = (AppCompatTextView) findViewById(R.id.row1column2);
+        period1 = (AppCompatTextView) findViewById(R.id.row2column2);
+        period2 = (AppCompatTextView) findViewById(R.id.row3column2);
+        period3 = (AppCompatTextView) findViewById(R.id.row4column2);
+        period4 = (AppCompatTextView) findViewById(R.id.row5column2);
+        period5 = (AppCompatTextView) findViewById(R.id.row6column2);
+        period6 = (AppCompatTextView) findViewById(R.id.row7column2);
 
-        dayDateStatus=(AppCompatTextView)findViewById(R.id.table2row1column2);
-        period1Status=(AppCompatTextView)findViewById(R.id.table2row2column2);
-        period2Status=(AppCompatTextView)findViewById(R.id.table2row3column2);
-        period3Status=(AppCompatTextView)findViewById(R.id.table2row4column2);
-        period4Status=(AppCompatTextView)findViewById(R.id.table2row5column2);
-        period5Status=(AppCompatTextView)findViewById(R.id.table2row6column2);
-        period6Status=(AppCompatTextView)findViewById(R.id.table2row7column2);
+        dayDateStatus = (AppCompatTextView) findViewById(R.id.table2row1column2);
+        period1Status = (AppCompatTextView) findViewById(R.id.table2row2column2);
+        period2Status = (AppCompatTextView) findViewById(R.id.table2row3column2);
+        period3Status = (AppCompatTextView) findViewById(R.id.table2row4column2);
+        period4Status = (AppCompatTextView) findViewById(R.id.table2row5column2);
+        period5Status = (AppCompatTextView) findViewById(R.id.table2row6column2);
+        period6Status = (AppCompatTextView) findViewById(R.id.table2row7column2);
 
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        Intent intent = getIntent();
+        String result = intent.getStringExtra("percentage");
+        float percent = Float.valueOf(result);
 
-        Intent intent=getIntent();
-        String result=intent.getStringExtra("percentage");
-        float percent=Float.valueOf(result);
+        rememberMe = intent.getBooleanExtra("Remember", false);
 
-        rememberMe=intent.getBooleanExtra("Remember",false);
-
-        String classesHeld=intent.getStringExtra("classes1");
-        String classesAttended=intent.getStringExtra("classes2");
+        String classesHeld = intent.getStringExtra("classes1");
+        String classesAttended = intent.getStringExtra("classes2");
         //originalUrl=intent.getStringExtra("url");
 
-        timeTable=intent.getStringArrayListExtra("timetable");
-        dayWiseTable=intent.getStringArrayListExtra("daywisetable");
+        timeTable = intent.getStringArrayListExtra("timetable");
+        dayWiseTable = intent.getStringArrayListExtra("daywisetable");
 
-        waveView=(WaveView)findViewById(R.id.wave_view);
+        waveView = (WaveView) findViewById(R.id.wave_view);
         ProgressBarAnimation anim = new ProgressBarAnimation(waveView, 0, percent);
         anim.setDuration(1000);
         waveView.startAnimation(anim);
-        Result.setText(String.format(getString(R.string.percentage),percent));
-        classAttended.setText(String.format(getString(R.string.attendedString),classesAttended));
-        classesTotal.setText(String.format(getString(R.string.totalString),classesHeld));
+        Result.setText(String.format(getString(R.string.percentage), percent));
+        classAttended.setText(String.format(getString(R.string.attendedString), classesAttended));
+        classesTotal.setText(String.format(getString(R.string.totalString), classesHeld));
 
         //getDate
         Date c = Calendar.getInstance().getTime();
@@ -250,6 +250,7 @@ public class ResultActivity extends AppCompatActivity {
 
     }
 
+
     private class Content extends AsyncTask<Void, Void, Void> {
 
         @Override
@@ -357,11 +358,23 @@ public class ResultActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if(rememberMe){
+            SharedPreferences loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+            SharedPreferences.Editor loginPrefsEditor = loginPreferences.edit();
+            loginPrefsEditor.putBoolean("saveLogin", false);
+            loginPrefsEditor.clear();
+            loginPrefsEditor.apply();
+
             Task.cancel(true);
             super.onBackPressed();
             this.finish();
         }
         else {
+            SharedPreferences loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+            SharedPreferences.Editor loginPrefsEditor = loginPreferences.edit();
+            loginPrefsEditor.putBoolean("saveLogin", false);
+            loginPrefsEditor.clear();
+            loginPrefsEditor.apply();
+
             Task.cancel(true);
             //for remember me
             Intent intent = new Intent(this, MainActivity.class);
