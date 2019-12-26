@@ -198,6 +198,7 @@
             android:background="@drawable/ripple_borderless"
             android:fontFamily="@font/roboto_medium"
             android:text="Rate us!"
+            android:onClick="rateMe"
             android:textAllCaps="true"
             android:textColor="@color/white" />
 
