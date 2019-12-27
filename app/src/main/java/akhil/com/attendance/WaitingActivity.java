@@ -217,7 +217,7 @@ public class WaitingActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            Toast.makeText(WaitingActivity.this, at, Toast.LENGTH_LONG).show();
+            //Toast.makeText(WaitingActivity.this, at, Toast.LENGTH_LONG).show();
             //float percent=Float.valueOf(at);
             openResultativity();
         }
