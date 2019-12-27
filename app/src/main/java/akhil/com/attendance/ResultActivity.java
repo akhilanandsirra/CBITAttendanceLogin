@@ -4,14 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 
+import android.animation.TypeEvaluator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.widget.Toast;
 
 import com.airbnb.lottie.animation.content.Content;
@@ -25,7 +30,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.math.RoundingMode;
 import java.net.SocketTimeoutException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -44,6 +51,7 @@ public class ResultActivity extends AppCompatActivity {
     String date,originalUrl;
     AppCompatButton websiteButton,calculatorButton;
     boolean rememberMe;
+    boolean doublePressedBackExit = false;
     private Content Task;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,9 +84,10 @@ public class ResultActivity extends AppCompatActivity {
         String result = intent.getStringExtra("percentage");
         float percent = Float.valueOf(result);
 
+
         rememberMe = intent.getBooleanExtra("Remember", false);
 
-        String classesHeld = intent.getStringExtra("classes1");
+        final String classesHeld = intent.getStringExtra("classes1");
         String classesAttended = intent.getStringExtra("classes2");
         //originalUrl=intent.getStringExtra("url");
 
@@ -89,9 +98,55 @@ public class ResultActivity extends AppCompatActivity {
         ProgressBarAnimation anim = new ProgressBarAnimation(waveView, 0, percent);
         anim.setDuration(1000);
         waveView.startAnimation(anim);
-        Result.setText(String.format(getString(R.string.percentage), percent));
-        classAttended.setText(String.format(getString(R.string.attendedString), classesAttended));
-        classesTotal.setText(String.format(getString(R.string.totalString), classesHeld));
+
+        //Result.setText(String.format(getString(R.string.percentage), percent));
+
+        ValueAnimator valueAnimatorPercent = ValueAnimator.ofFloat(0, percent);
+        valueAnimatorPercent.setDuration(2000);
+        valueAnimatorPercent.setInterpolator(new DecelerateInterpolator());
+        valueAnimatorPercent.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                DecimalFormat df = new DecimalFormat("#0.00");
+                df.setRoundingMode(RoundingMode.DOWN);
+                Result.setText(String.format(getString(R.string.percentage),(df.format((float)valueAnimator.getAnimatedValue()))));
+            }
+        });
+
+        valueAnimatorPercent.setEvaluator(new TypeEvaluator<Float>() {
+            @Override
+            public Float evaluate(float fraction, Float startValue, Float endValue) {
+                return (startValue + (endValue - startValue) * fraction);
+            }
+        });
+
+        valueAnimatorPercent.start();
+
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(0, Integer.parseInt(classesAttended));
+        ValueAnimator valueAnimator2 = ValueAnimator.ofInt(0, Integer.parseInt(classesHeld));
+        valueAnimator.setDuration(2000);
+        valueAnimator.setInterpolator(new LinearInterpolator());
+        valueAnimator2.setDuration(2000);
+        valueAnimator2.setInterpolator(new LinearInterpolator());
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                classAttended.setText(String.format(getString(R.string.attendedString),valueAnimator.getAnimatedValue().toString()));
+            }
+        });
+
+        valueAnimator2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                classesTotal.setText(String.format(getString(R.string.totalString),valueAnimator.getAnimatedValue().toString()));
+            }
+        });
+
+        valueAnimator.start();
+        valueAnimator2.start();
+
+        //classAttended.setText(String.format(getString(R.string.attendedString), classesAttended));
+        //classesTotal.setText(String.format(getString(R.string.totalString), classesHeld));
 
         //getDate
         Date c = Calendar.getInstance().getTime();
@@ -357,29 +412,42 @@ public class ResultActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(rememberMe){
-            SharedPreferences loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
-            SharedPreferences.Editor loginPrefsEditor = loginPreferences.edit();
-            loginPrefsEditor.putBoolean("saveLogin", false);
-            loginPrefsEditor.clear();
-            loginPrefsEditor.apply();
+        if(doublePressedBackExit){
+            if(rememberMe){
+                SharedPreferences loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor loginPrefsEditor = loginPreferences.edit();
+                loginPrefsEditor.putBoolean("saveLogin", false);
+                loginPrefsEditor.clear();
+                loginPrefsEditor.apply();
 
-            Task.cancel(true);
-            super.onBackPressed();
-            this.finish();
+                Task.cancel(true);
+                super.onBackPressed();
+                this.finish();
+            }
+            else
+            {
+                SharedPreferences loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor loginPrefsEditor = loginPreferences.edit();
+                loginPrefsEditor.putBoolean("saveLogin", false);
+                loginPrefsEditor.clear();
+                loginPrefsEditor.apply();
+
+                Task.cancel(true);
+                //for remember me
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
         }
-        else {
-            SharedPreferences loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
-            SharedPreferences.Editor loginPrefsEditor = loginPreferences.edit();
-            loginPrefsEditor.putBoolean("saveLogin", false);
-            loginPrefsEditor.clear();
-            loginPrefsEditor.apply();
-
-            Task.cancel(true);
-            //for remember me
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+        else{
+            this.doublePressedBackExit = true;
+            Toast.makeText(getApplicationContext(), "Press again to exit", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    doublePressedBackExit = false;
+                }
+            }, 2000);
         }
     }
 }
