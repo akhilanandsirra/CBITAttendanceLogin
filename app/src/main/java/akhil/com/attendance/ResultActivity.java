@@ -87,7 +87,7 @@ public class ResultActivity extends AppCompatActivity {
 
         rememberMe = intent.getBooleanExtra("Remember", false);
 
-        final String classesHeld = intent.getStringExtra("classes1");
+        String classesHeld = intent.getStringExtra("classes1");
         String classesAttended = intent.getStringExtra("classes2");
         //originalUrl=intent.getStringExtra("url");
 
