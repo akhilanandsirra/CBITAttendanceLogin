@@ -102,7 +102,7 @@ public class ResultActivity extends AppCompatActivity {
         //Result.setText(String.format(getString(R.string.percentage), percent));
 
         ValueAnimator valueAnimatorPercent = ValueAnimator.ofFloat(0, percent);
-        valueAnimatorPercent.setDuration(2000);
+        valueAnimatorPercent.setDuration(1200);
         valueAnimatorPercent.setInterpolator(new DecelerateInterpolator());
         valueAnimatorPercent.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -124,9 +124,9 @@ public class ResultActivity extends AppCompatActivity {
 
         ValueAnimator valueAnimator = ValueAnimator.ofInt(0, Integer.parseInt(classesAttended));
         ValueAnimator valueAnimator2 = ValueAnimator.ofInt(0, Integer.parseInt(classesHeld));
-        valueAnimator.setDuration(2000);
+        valueAnimator.setDuration(1200);
         valueAnimator.setInterpolator(new LinearInterpolator());
-        valueAnimator2.setDuration(2000);
+        valueAnimator2.setDuration(1200);
         valueAnimator2.setInterpolator(new LinearInterpolator());
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
