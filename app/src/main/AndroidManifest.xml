@@ -13,13 +13,18 @@
         android:resizeableActivity="false"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".CalculatorActivity"></activity>
-        <activity android:name=".WaitingActivity" />
+        android:theme="@style/AppTheme"
+        >
+        <activity android:name=".CalculatorActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".WaitingActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ResultActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
