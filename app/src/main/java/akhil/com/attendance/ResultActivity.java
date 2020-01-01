@@ -99,9 +99,9 @@ public class ResultActivity extends AppCompatActivity {
         anim.setDuration(1000);
         waveView.startAnimation(anim);
 
-        //Result.setText(String.format(getString(R.string.percentage), percent));
+        Result.setText(String.format(getString(R.string.percentage), percent));
 
-        ValueAnimator valueAnimatorPercent = ValueAnimator.ofFloat(0, percent);
+        /*ValueAnimator valueAnimatorPercent = ValueAnimator.ofFloat(0, percent);
         valueAnimatorPercent.setDuration(500);
         valueAnimatorPercent.setInterpolator(new DecelerateInterpolator());
         valueAnimatorPercent.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -120,13 +120,13 @@ public class ResultActivity extends AppCompatActivity {
             }
         });
 
-        valueAnimatorPercent.start();
+        valueAnimatorPercent.start();*/
 
         ValueAnimator valueAnimator = ValueAnimator.ofInt(0, Integer.parseInt(classesAttended));
         ValueAnimator valueAnimator2 = ValueAnimator.ofInt(0, Integer.parseInt(classesHeld));
-        valueAnimator.setDuration(500);
+        valueAnimator.setDuration(1000);
         valueAnimator.setInterpolator(new LinearInterpolator());
-        valueAnimator2.setDuration(500);
+        valueAnimator2.setDuration(1000);
         valueAnimator2.setInterpolator(new LinearInterpolator());
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
