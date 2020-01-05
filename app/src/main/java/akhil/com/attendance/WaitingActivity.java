@@ -234,7 +234,7 @@ public class WaitingActivity extends AppCompatActivity {
         intent.putExtra("Username",UserName);
         intent.putExtra("Password",Password);
         intent.putExtra("Remember",rememberMe);
-
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 
