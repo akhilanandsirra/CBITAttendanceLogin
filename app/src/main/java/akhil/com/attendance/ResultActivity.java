@@ -50,7 +50,7 @@ public class ResultActivity extends AppCompatActivity {
     ArrayList<String> dayWiseTable = new ArrayList<>();
     String date,originalUrl;
     AppCompatButton websiteButton,calculatorButton;
-    boolean rememberMe;
+    boolean rememberMe,refresh;
     boolean doublePressedBackExit = false;
     private Content Task;
     @Override
@@ -86,6 +86,9 @@ public class ResultActivity extends AppCompatActivity {
 
 
         rememberMe = intent.getBooleanExtra("Remember", false);
+
+        SharedPreferences loginPreferences2 = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        refresh = loginPreferences2.getBoolean("saveLogin", false);
 
         String classesHeld = intent.getStringExtra("classes1");
         String classesAttended = intent.getStringExtra("classes2");
@@ -421,8 +424,10 @@ public class ResultActivity extends AppCompatActivity {
                 loginPrefsEditor.apply();
 
                 Task.cancel(true);
-                super.onBackPressed();
-                this.finish();
+                //for remember me
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
             else
             {
@@ -450,4 +455,18 @@ public class ResultActivity extends AppCompatActivity {
             }, 2000);
         }
     }
+
+    public void refresh(View v) {
+        if(refresh){
+            Task.cancel(true);
+            this.finish();
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+        else{
+            Toast.makeText(ResultActivity.this, "Refresh is only available for saved login", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
