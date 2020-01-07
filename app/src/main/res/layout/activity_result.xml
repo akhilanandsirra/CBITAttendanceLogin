@@ -58,6 +58,25 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:textAlignment="center">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/refresh_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:background="@drawable/ripple_borderless"
+                    android:fontFamily="@font/roboto_condensed_regular"
+                    android:text="@string/refresh"
+                    android:textColor="@color/black"
+                    android:onClick="refresh"/>
+
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -67,7 +86,7 @@
             android:layout_below="@id/LinearLayout1"
             android:layout_centerHorizontal="true"
             android:orientation="vertical"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="3dp"
             >
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -127,7 +146,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_condensed_bold"
                         android:textSize="16sp"
-                        android:text="Today's Time Table"
+                        android:text="@string/today_s_time_table"
+                        android:textColor="@color/black"
                         android:gravity="center"
                         android:layout_marginBottom="25dp"
                         />
@@ -143,6 +163,7 @@
                             android:background="@drawable/cell"
                             android:padding="3dp"
                             android:text="Day/Date"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
                             />
 
@@ -153,6 +174,7 @@
                             android:fontFamily="@font/roboto_condensed_regular"
                             android:textSize="14sp"
                             android:text="10/4/2019\n(Fri)"
+                            android:textColor="@color/black"
                             android:gravity="center"
                             android:background="@drawable/cell"
                             android:padding="3dp"
@@ -169,6 +191,7 @@
                             android:fontFamily="@font/roboto_condensed_bold"
                             android:textSize="14sp"
                             android:text="1\n(09:10-10:10)"
+                            android:textColor="@color/black"
                             android:gravity="center"
                             android:layout_weight="1"
                             android:background="@drawable/cell"
@@ -182,6 +205,7 @@
                             android:fontFamily="@font/roboto_condensed_regular"
                             android:gravity="center"
                             android:text="OS"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
                             android:background="@drawable/cell"
                             android:padding="3dp"
@@ -198,6 +222,7 @@
                             android:fontFamily="@font/roboto_condensed_bold"
                             android:textSize="14sp"
                             android:text="2\n(10:10-11:10)"
+                            android:textColor="@color/black"
                             android:gravity="center"
                             android:background="@drawable/cell"
                             android:padding="3dp"
@@ -210,6 +235,7 @@
                             android:fontFamily="@font/roboto_condensed_regular"
                             android:gravity="center"
                             android:text="TOA"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
                             android:background="@drawable/cell"
                             android:padding="3dp"
@@ -226,6 +252,7 @@
                             android:fontFamily="@font/roboto_condensed_bold"
                             android:textSize="14sp"
                             android:text="3\n(11:15-12:15)"
+                            android:textColor="@color/black"
                             android:gravity="center"
                             android:background="@drawable/cell"
                             android:padding="3dp"
@@ -238,6 +265,7 @@
                             android:fontFamily="@font/roboto_condensed_regular"
                             android:textSize="14sp"
                             android:text="PP"
+                            android:textColor="@color/black"
                             android:gravity="center"
                             android:background="@drawable/cell"
                             android:padding="3dp"
@@ -256,6 +284,7 @@
                             android:text="4\n(01:15-02:15)"
                             android:gravity="center"
                             android:background="@drawable/cell"
+                            android:textColor="@color/black"
                             android:padding="3dp"
                             />
 
@@ -266,6 +295,7 @@
                             android:fontFamily="@font/roboto_condensed_regular"
                             android:textSize="14sp"
                             android:text="WT"
+                            android:textColor="@color/black"
                             android:gravity="center"
                             android:background="@drawable/cell"
                             android:padding="3dp"
@@ -282,6 +312,7 @@
                             android:fontFamily="@font/roboto_condensed_bold"
                             android:textSize="14sp"
                             android:text="5\n(02:15-03:15)"
+                            android:textColor="@color/black"
                             android:gravity="center"
                             android:background="@drawable/cell"
                             android:padding="3dp"
@@ -294,6 +325,7 @@
                             android:fontFamily="@font/roboto_condensed_regular"
                             android:textSize="14sp"
                             android:text="DBMS"
+                            android:textColor="@color/black"
                             android:gravity="center"
                             android:background="@drawable/cell"
                             android:padding="3dp"
@@ -311,6 +343,7 @@
                             android:textSize="14sp"
                             android:gravity="center"
                             android:text="6\n(03:20-04:20)"
+                            android:textColor="@color/black"
                             android:background="@drawable/cell"
                             android:padding="3dp"
                             />
@@ -322,6 +355,7 @@
                             android:fontFamily="@font/roboto_condensed_regular"
                             android:textSize="14sp"
                             android:text="SE"
+                            android:textColor="@color/black"
                             android:gravity="center"
                             android:background="@drawable/cell"
                             android:padding="3dp"
@@ -353,7 +387,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_condensed_bold"
                         android:textSize="16sp"
-                        android:text="Datewise Attendance"
+                        android:text="@string/datewise_attendance"
+                        android:textColor="@color/black"
                         android:gravity="center"
                         android:layout_marginBottom="25dp"
                         />
@@ -369,6 +404,7 @@
                             android:background="@drawable/cell"
                             android:padding="3dp"
                             android:text="Day/Date"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
                             />
 
@@ -379,6 +415,7 @@
                             android:fontFamily="@font/roboto_condensed_regular"
                             android:textSize="14sp"
                             android:text="10/4/2019\n()"
+                            android:textColor="@color/black"
                             android:gravity="center"
                             android:background="@drawable/cell"
                             android:padding="3dp"
@@ -395,6 +432,7 @@
                             android:fontFamily="@font/roboto_condensed_bold"
                             android:textSize="14sp"
                             android:text="1\n(09:10-10:10)"
+                            android:textColor="@color/black"
                             android:gravity="center"
                             android:layout_weight="1"
                             android:background="@drawable/cell"
@@ -408,6 +446,7 @@
                             android:fontFamily="@font/roboto_condensed_regular"
                             android:gravity="center"
                             android:text="P"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
                             android:background="@drawable/cell"
                             android:padding="3dp"
@@ -425,6 +464,7 @@
                             android:textSize="14sp"
                             android:text="2\n(10:10-11:10)"
                             android:gravity="center"
+                            android:textColor="@color/black"
                             android:background="@drawable/cell"
                             android:padding="3dp"
                             />
@@ -436,6 +476,7 @@
                             android:fontFamily="@font/roboto_condensed_regular"
                             android:gravity="center"
                             android:text="P"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
                             android:background="@drawable/cell"
                             android:padding="3dp"
@@ -453,6 +494,7 @@
                             android:textSize="14sp"
                             android:text="3\n(11:15-12:15)"
                             android:gravity="center"
+                            android:textColor="@color/black"
                             android:background="@drawable/cell"
                             android:padding="3dp"
                             />
@@ -464,6 +506,7 @@
                             android:fontFamily="@font/roboto_condensed_regular"
                             android:gravity="center"
                             android:text="P"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
                             android:background="@drawable/cell"
                             android:padding="3dp"
@@ -481,6 +524,7 @@
                             android:textSize="14sp"
                             android:text="4\n(01:15-02:15)"
                             android:gravity="center"
+                            android:textColor="@color/black"
                             android:background="@drawable/cell"
                             android:padding="3dp"
                             />
@@ -493,6 +537,7 @@
                             android:gravity="center"
                             android:text="A"
                             android:textSize="14sp"
+                            android:textColor="@color/black"
                             android:background="@drawable/cell"
                             android:padding="3dp"
                             />
@@ -508,6 +553,7 @@
                             android:fontFamily="@font/roboto_condensed_bold"
                             android:textSize="14sp"
                             android:text="5\n(02:15-03:15)"
+                            android:textColor="@color/black"
                             android:gravity="center"
                             android:background="@drawable/cell"
                             android:padding="3dp"
@@ -517,6 +563,7 @@
                             android:id="@+id/table2row6column2"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:textColor="@color/black"
                             android:fontFamily="@font/roboto_condensed_regular"
                             android:gravity="center"
                             android:text="P"
@@ -537,6 +584,7 @@
                             android:textSize="14sp"
                             android:gravity="center"
                             android:text="6\n(03:20-04:20)"
+                            android:textColor="@color/black"
                             android:background="@drawable/cell"
                             android:padding="3dp"
                             />
@@ -548,6 +596,7 @@
                             android:fontFamily="@font/roboto_condensed_regular"
                             android:gravity="center"
                             android:text="P"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
                             android:background="@drawable/cell"
                             android:padding="3dp"

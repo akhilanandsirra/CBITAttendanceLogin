@@ -20,4 +20,7 @@
     <string name="errorHundred1">You can not achieve 100.00% attendance</string>
     <string name="errorHundred2">If you haven\'t attended 1 or more classes!</string>
     <string name="sizeError">You don\'t have over a million classes</string>
+    <string name="refresh">REFRESH</string>
+    <string name="datewise_attendance">Datewise Attendance</string>
+    <string name="today_s_time_table">Today\'s Time Table</string>
 </resources>

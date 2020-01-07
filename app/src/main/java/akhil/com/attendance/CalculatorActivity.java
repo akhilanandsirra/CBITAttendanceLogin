@@ -30,8 +30,6 @@ public class CalculatorActivity extends AppCompatActivity {
         findViewById(R.id.calculate_activity).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                //userName.setError(null);
-                //password.setError(null);
                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 return true;

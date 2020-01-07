@@ -247,7 +247,7 @@ public class WaitingActivity extends AppCompatActivity {
         this.finish();
     }
 
-    @Override
+    /*@Override
     protected void onPause() {
         // TODO Auto-generated method stub
         super.onPause();
@@ -261,6 +261,6 @@ public class WaitingActivity extends AppCompatActivity {
         super.onStop();
         Task.cancel(true);
         this.finish();
-    }
+    }*/
 
 }
