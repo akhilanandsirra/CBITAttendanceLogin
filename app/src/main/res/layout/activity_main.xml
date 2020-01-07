@@ -137,7 +137,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="false"
-                        android:text="Remember Me"
+                        android:text="@string/stay_signed_in"
                         android:textSize="16sp"
                         android:fontFamily="@font/roboto_condensed_regular"
                         android:textColor="@color/white"

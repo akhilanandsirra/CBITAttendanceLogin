@@ -48,11 +48,13 @@ public class ResultActivity extends AppCompatActivity {
             dayDateStatus,period1Status,period2Status,period3Status,period4Status,period5Status,period6Status;
     ArrayList<String> timeTable = new ArrayList<>();
     ArrayList<String> dayWiseTable = new ArrayList<>();
-    String date,originalUrl;
+    String date,originalUrl,savedUrl;
     AppCompatButton websiteButton,calculatorButton;
     boolean rememberMe,refresh;
     boolean doublePressedBackExit = false;
     private Content Task;
+    private SharedPreferences loginPreferences;
+    private SharedPreferences.Editor loginPrefsEditor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +80,7 @@ public class ResultActivity extends AppCompatActivity {
         period5Status = (AppCompatTextView) findViewById(R.id.table2row6column2);
         period6Status = (AppCompatTextView) findViewById(R.id.table2row7column2);
 
+
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         Intent intent = getIntent();
@@ -89,6 +92,9 @@ public class ResultActivity extends AppCompatActivity {
 
         SharedPreferences loginPreferences2 = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         refresh = loginPreferences2.getBoolean("saveLogin", false);
+
+        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        savedUrl= loginPreferences.getString("url", null);
 
         String classesHeld = intent.getStringExtra("classes1");
         String classesAttended = intent.getStringExtra("classes2");
@@ -293,6 +299,18 @@ public class ResultActivity extends AppCompatActivity {
             }
         }
 
+        if(savedUrl!=null){
+            websiteButton=(AppCompatButton)findViewById(R.id.websiteButton);
+            websiteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(ResultActivity.this, "Opening Website", Toast.LENGTH_SHORT).show();
+                    Uri uriUrl = Uri.parse(savedUrl);
+                    Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+                    startActivity(launchBrowser);                }
+            });
+        }
+
         calculatorButton=(AppCompatButton)findViewById(R.id.calculatorButton);
         calculatorButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -305,7 +323,6 @@ public class ResultActivity extends AppCompatActivity {
         });
 
         Task= (Content) new Content().execute();
-
     }
 
 
@@ -395,6 +412,13 @@ public class ResultActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+            loginPrefsEditor = loginPreferences.edit();
+            if(savedUrl==null){
+                savedUrl=originalUrl;
+                loginPrefsEditor.putString("url", savedUrl);
+                loginPrefsEditor.apply();
+            }
             Toast.makeText(ResultActivity.this, "Website Initiated", Toast.LENGTH_SHORT).show();
             websiteButton=(AppCompatButton)findViewById(R.id.websiteButton);
             websiteButton.setOnClickListener(new View.OnClickListener() {

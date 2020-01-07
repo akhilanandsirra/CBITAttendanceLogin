@@ -33,6 +33,7 @@ public class WaitingActivity extends AppCompatActivity {
     ArrayList<String> dayWiseTable = new ArrayList<>();
     boolean rememberMe;
     private Content Task;
+    String savedUrl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,10 @@ public class WaitingActivity extends AppCompatActivity {
         percentage=(AppCompatTextView) findViewById(R.id.percent);
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
+        SharedPreferences loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        savedUrl= loginPreferences.getString("url", null);
+
         Task= (Content) new Content().execute();
     }
 
@@ -59,11 +64,13 @@ public class WaitingActivity extends AppCompatActivity {
                 UserName=intent.getStringExtra("Username");
                 Password=intent.getStringExtra("Password");
                 rememberMe=intent.getBooleanExtra("Remember",false);
-                String url2="https://erp.cbit.org.in/";
-                Connection.Response loginForm = Jsoup.connect(url2)
-                        .method(Connection.Method.GET)
-                        .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0")
-                        .execute();
+
+                if(savedUrl==null){
+                    String url2="https://erp.cbit.org.in/";
+                    Connection.Response loginForm = Jsoup.connect(url2)
+                            .method(Connection.Method.GET)
+                            .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0")
+                            .execute();
 
                     Document doc = loginForm.parse();
                     Element e = doc.select("input[id=__VIEWSTATE]").first();
@@ -79,45 +86,45 @@ public class WaitingActivity extends AppCompatActivity {
                     e = doc.select("input[id=__EVENTARGUMENT]").first();
                     String eventArgument = e.attr("value");
 
-                Document document2 = Jsoup.connect(url2)
-                        .data("cookieexists", "false")
-                        .data("txtUserName",UserName)
-                        .data("btnNext","Next")
-                        .data("__LASTFOCUS",lastFocus)
-                        .data("__EVENTTARGET",eventTarget)
-                        .data("__EVENTARGUMENT",eventArgument)
-                        .data("__VIEWSTATEGENERATOR",viewstateGenerator)
-                        .data("__VIEWSTATE", viewState)
-                        .data("__EVENTVALIDATION", eventValidation)
-                        .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0")
-                        .get();
+                    Document document2 = Jsoup.connect(url2)
+                            .data("cookieexists", "false")
+                            .data("txtUserName",UserName)
+                            .data("btnNext","Next")
+                            .data("__LASTFOCUS",lastFocus)
+                            .data("__EVENTTARGET",eventTarget)
+                            .data("__EVENTARGUMENT",eventArgument)
+                            .data("__VIEWSTATEGENERATOR",viewstateGenerator)
+                            .data("__VIEWSTATE", viewState)
+                            .data("__EVENTVALIDATION", eventValidation)
+                            .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0")
+                            .get();
 
 
-                Element e2 = document2.select("input[id=__VIEWSTATE]").first();
-                String viewState2 = e2.attr("value");
-                e2 = document2.select("input[id=__EVENTVALIDATION]").first();
-                String eventValidation2 = e2.attr("value");
-                e2 = document2.select("input[id=__LASTFOCUS]").first();
-                String lastFocus2 = e2.attr("value");
-                e2 = document2.select("input[id=__EVENTTARGET]").first();
-                String eventTarget2 = e2.attr("value");
-                e2 = document2.select("input[id=__VIEWSTATEGENERATOR]").first();
-                String viewstateGenerator2 = e2.attr("value");
-                e2 = document2.select("input[id=__EVENTARGUMENT]").first();
-                String eventArgument2 = e2.attr("value");
+                    Element e2 = document2.select("input[id=__VIEWSTATE]").first();
+                    String viewState2 = e2.attr("value");
+                    e2 = document2.select("input[id=__EVENTVALIDATION]").first();
+                    String eventValidation2 = e2.attr("value");
+                    e2 = document2.select("input[id=__LASTFOCUS]").first();
+                    String lastFocus2 = e2.attr("value");
+                    e2 = document2.select("input[id=__EVENTTARGET]").first();
+                    String eventTarget2 = e2.attr("value");
+                    e2 = document2.select("input[id=__VIEWSTATEGENERATOR]").first();
+                    String viewstateGenerator2 = e2.attr("value");
+                    e2 = document2.select("input[id=__EVENTARGUMENT]").first();
+                    String eventArgument2 = e2.attr("value");
 
-                Document document = Jsoup.connect(url2)
-                        .data("cookieexists", "false")
-                        .data("txtPassword",Password)
-                        .data("btnSubmit","Submit")
-                        .data("__LASTFOCUS",lastFocus2)
-                        .data("__EVENTTARGET",eventTarget2)
-                        .data("__EVENTARGUMENT",eventArgument2)
-                        .data("__VIEWSTATEGENERATOR",viewstateGenerator2)
-                        .data("__VIEWSTATE", viewState2)
-                        .data("__EVENTVALIDATION", eventValidation2)
-                        .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0")
-                        .get();
+                    Document document = Jsoup.connect(url2)
+                            .data("cookieexists", "false")
+                            .data("txtPassword",Password)
+                            .data("btnSubmit","Submit")
+                            .data("__LASTFOCUS",lastFocus2)
+                            .data("__EVENTTARGET",eventTarget2)
+                            .data("__EVENTARGUMENT",eventArgument2)
+                            .data("__VIEWSTATEGENERATOR",viewstateGenerator2)
+                            .data("__VIEWSTATE", viewState2)
+                            .data("__EVENTVALIDATION", eventValidation2)
+                            .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0")
+                            .get();
 
                     Element attendance = document.getElementById("ctl00_cpStud_lblTotalPercentage");
                     at=attendance.html();
@@ -132,37 +139,91 @@ public class WaitingActivity extends AppCompatActivity {
                         throw new Exception("demo");
                     }
 
-                Element table3=document.select("table").get(19);
-                Elements rows3 = table3.select("tr");
-                Element row = rows3.get(rows3.size()-1);
-                Elements cols = row.select("td");
-                for(int i=3;i<5;i++)
-                    classesTable.add(cols.get(i).text());
-                //System.out.println(classesTable);
-                classesHeld=classesTable.get(0);
-                classesAttended=classesTable.get(1);
+                    Element table3=document.select("table").get(19);
+                    Elements rows3 = table3.select("tr");
+                    Element row = rows3.get(rows3.size()-1);
+                    Elements cols = row.select("td");
+                    for(int i=3;i<5;i++)
+                        classesTable.add(cols.get(i).text());
+                    //System.out.println(classesTable);
+                    classesHeld=classesTable.get(0);
+                    classesAttended=classesTable.get(1);
 
-                //Table1 Details
+                    //Table1 Details
 
-                Element timetable=document.select("table").get(17);
-                Elements rows = timetable.select("tr");
-                for (int i = 1; i < rows.size(); i++) { //first row is the col names so skip it.
-                    Element rowTime = rows.get(i);
-                    Elements colsTime = rowTime.select("td");
-                    for(int j=0;j<colsTime.size();j++)
-                        timeTable.add(colsTime.get(j).text());
+                    Element timetable=document.select("table").get(17);
+                    Elements rows = timetable.select("tr");
+                    for (int i = 1; i < rows.size(); i++) { //first row is the col names so skip it.
+                        Element rowTime = rows.get(i);
+                        Elements colsTime = rowTime.select("td");
+                        for(int j=0;j<colsTime.size();j++)
+                            timeTable.add(colsTime.get(j).text());
+                    }
+
+                    //dayWise details
+
+                    Element daywisetable=document.select("table").get(24);
+                    Elements rows2 = daywisetable.select("tr");
+
+                    for (int i = 1; i < rows2.size(); i++) { //first row is the col names so skip it.
+                        Element rowDaywise = rows2.get(i);
+                        Elements colsDaywise = rowDaywise.select("tr");
+                        for(int j=0;j<colsDaywise.size();j++)
+                            dayWiseTable.add(colsDaywise.get(j).text());
+                    }
                 }
 
-                //dayWise details
+                else{
 
-                Element daywisetable=document.select("table").get(24);
-                Elements rows2 = daywisetable.select("tr");
+                    Document document = Jsoup.connect(savedUrl)
+                            .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0")
+                            .get();
 
-                for (int i = 1; i < rows2.size(); i++) { //first row is the col names so skip it.
-                    Element rowDaywise = rows2.get(i);
-                    Elements colsDaywise = rowDaywise.select("tr");
-                    for(int j=0;j<colsDaywise.size();j++)
-                        dayWiseTable.add(colsDaywise.get(j).text());
+                    Element attendance = document.getElementById("ctl00_cpStud_lblTotalPercentage");
+                    at=attendance.html();
+                    at=at.replaceAll("[^\\.0123456789]","");
+
+                    if(at.isEmpty()){
+                        SharedPreferences loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+                        SharedPreferences.Editor loginPrefsEditor = loginPreferences.edit();
+                        loginPrefsEditor.putBoolean("saveLogin", false);
+                        loginPrefsEditor.clear();
+                        loginPrefsEditor.apply();
+                        throw new Exception("demo");
+                    }
+
+                    Element table3=document.select("table").get(19);
+                    Elements rows3 = table3.select("tr");
+                    Element row = rows3.get(rows3.size()-1);
+                    Elements cols = row.select("td");
+                    for(int i=3;i<5;i++)
+                        classesTable.add(cols.get(i).text());
+                    //System.out.println(classesTable);
+                    classesHeld=classesTable.get(0);
+                    classesAttended=classesTable.get(1);
+
+                    //Table1 Details
+
+                    Element timetable=document.select("table").get(17);
+                    Elements rows = timetable.select("tr");
+                    for (int i = 1; i < rows.size(); i++) { //first row is the col names so skip it.
+                        Element rowTime = rows.get(i);
+                        Elements colsTime = rowTime.select("td");
+                        for(int j=0;j<colsTime.size();j++)
+                            timeTable.add(colsTime.get(j).text());
+                    }
+
+                    //dayWise details
+
+                    Element daywisetable=document.select("table").get(24);
+                    Elements rows2 = daywisetable.select("tr");
+
+                    for (int i = 1; i < rows2.size(); i++) { //first row is the col names so skip it.
+                        Element rowDaywise = rows2.get(i);
+                        Elements colsDaywise = rowDaywise.select("tr");
+                        for(int j=0;j<colsDaywise.size();j++)
+                            dayWiseTable.add(colsDaywise.get(j).text());
+                    }
                 }
 
             }
