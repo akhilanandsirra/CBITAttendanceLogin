@@ -165,7 +165,7 @@
                 android:layout_marginTop="20dp"
                 android:text="ENTER ALL THREE FIELDS"
                 android:fontFamily="@font/roboto_condensed_light"
-                android:textSize="18sp"/>
+                android:textSize="17sp"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/resultView2"
@@ -175,7 +175,7 @@
                 android:layout_centerInParent="true"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/roboto_condensed_light"
-                android:textSize="18sp"
+                android:textSize="17sp"
                 />
 
             <androidx.appcompat.widget.AppCompatButton

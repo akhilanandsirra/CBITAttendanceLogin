@@ -1,8 +1,11 @@
 package akhil.com.attendance;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Trace;
@@ -44,8 +47,15 @@ public class WaitingActivity extends AppCompatActivity {
 
         SharedPreferences loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         savedUrl= loginPreferences.getString("url", null);
+        
+        if(isConnected()){
+        Task= (Content) new Content().execute();}
 
-        Task= (Content) new Content().execute();
+        else{
+            Toast.makeText(WaitingActivity.this, "No Internet Connection", Toast.LENGTH_LONG).show();
+            Task.cancel(true);
+            this.finish();
+        }
     }
 
     private class Content extends AsyncTask<Void, Void, Void> {
@@ -53,6 +63,11 @@ public class WaitingActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            if(!isConnected()){
+                Toast.makeText(WaitingActivity.this, "No Internet Connection", Toast.LENGTH_LONG).show();
+                Task.cancel(true);
+                finish();
+            }
         }
 
         @Override
@@ -189,7 +204,7 @@ public class WaitingActivity extends AppCompatActivity {
                         loginPrefsEditor.putBoolean("saveLogin", false);
                         loginPrefsEditor.clear();
                         loginPrefsEditor.apply();
-                        throw new Exception("demo");
+                        throw new Exception("test");
                     }
 
                     Element table3=document.select("table").get(19);
@@ -228,7 +243,6 @@ public class WaitingActivity extends AppCompatActivity {
 
             }
             catch(NullPointerException e){
-
                 runOnUiThread(new Runnable(){
                     public void run() {
                         Toast.makeText(getApplicationContext(), "Password is Incorrect",Toast.LENGTH_LONG).show();
@@ -260,10 +274,25 @@ public class WaitingActivity extends AppCompatActivity {
                 finish();
             }
 
-            catch (IOException e) {
-                Toast.makeText(WaitingActivity.this, "No Internet Connection", Toast.LENGTH_LONG).show();
+            catch(IOException e) {
+                runOnUiThread(new Runnable(){
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "No Internet Connection",Toast.LENGTH_LONG).show();
+                    }
+                });
+                Task.cancel(true);
+                finish();
             }
-            catch (Exception e) {
+            catch(RuntimeException e){
+                runOnUiThread(new Runnable(){
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "No Internet Connection",Toast.LENGTH_LONG).show();
+                    }
+                });
+                Task.cancel(true);
+                finish();
+            }
+            catch(Exception e) {
                 runOnUiThread(new Runnable(){
                     public void run() {
                         Toast.makeText(getApplicationContext(), "Percentage not available",Toast.LENGTH_LONG).show();
@@ -280,7 +309,13 @@ public class WaitingActivity extends AppCompatActivity {
             super.onPostExecute(aVoid);
             //Toast.makeText(WaitingActivity.this, at, Toast.LENGTH_LONG).show();
             //float percent=Float.valueOf(at);
-            openResultativity();
+            if(isConnected()){
+            openResultativity();}
+            else{
+                Toast.makeText(WaitingActivity.this, "No Internet Connection", Toast.LENGTH_LONG).show();
+                Task.cancel(true);
+                finish();
+            }
         }
     }
 
@@ -323,5 +358,11 @@ public class WaitingActivity extends AppCompatActivity {
         Task.cancel(true);
         this.finish();
     }*/
+
+    public boolean isConnected(){
+        ConnectivityManager connectivityManager=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo=connectivityManager.getActiveNetworkInfo();
+        return networkInfo!=null && networkInfo.isConnected();
+    }
 
 }

@@ -6,8 +6,11 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -323,6 +326,9 @@ public class ResultActivity extends AppCompatActivity {
         });
 
         Task= (Content) new Content().execute();
+        if(savedUrl!=null){
+            Task.cancel(true);
+        }
     }
 
 
@@ -332,6 +338,9 @@ public class ResultActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             Toast.makeText(ResultActivity.this, "Initiating Website", Toast.LENGTH_SHORT).show();
+            if(!isConnected()){
+                Task.cancel(true);
+            }
         }
 
         @Override
@@ -404,7 +413,19 @@ public class ResultActivity extends AppCompatActivity {
                         .execute().url().toExternalForm();
             }
             catch (IOException e) {
-                Toast.makeText(ResultActivity.this, "No Internet Connection", Toast.LENGTH_LONG).show();
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
+                    }
+                });
+                Task.cancel(true);            }
+            catch (Exception e) {
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
+                    }
+                });
+                Task.cancel(true);
             }
             return null;
         }
@@ -481,16 +502,26 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     public void refresh(View v) {
-        if(refresh){
-            Task.cancel(true);
-            this.finish();
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+        if(isConnected()){
+            if(refresh){
+                Task.cancel(true);
+                this.finish();
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+            else{
+                Toast.makeText(ResultActivity.this, "Refresh is only available for saved login", Toast.LENGTH_SHORT).show();
+            }
         }
         else{
-            Toast.makeText(ResultActivity.this, "Refresh is only available for saved login", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ResultActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
         }
     }
 
+    public boolean isConnected(){
+        ConnectivityManager connectivityManager=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo=connectivityManager.getActiveNetworkInfo();
+        return networkInfo!=null && networkInfo.isConnected();
+    }
 }
