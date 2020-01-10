@@ -47,7 +47,7 @@ public class WaitingActivity extends AppCompatActivity {
 
         SharedPreferences loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         savedUrl= loginPreferences.getString("url", null);
-        
+
         if(isConnected()){
         Task= (Content) new Content().execute();}
 
