@@ -2,8 +2,10 @@ package akhil.com.attendance;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,6 +18,7 @@ import com.google.android.material.textfield.TextInputLayout;
 public class CalculatorActivity extends AppCompatActivity {
 
     private TextInputLayout Classes_Attended,Classes_Conducted,Desired_Percentage;
+    private AppCompatEditText editClasses_Attended,editClasses_Conducted,editDesired_Percentage;
     AppCompatButton CalculateButton;
     private AppCompatTextView result,result2;
 
@@ -39,6 +42,18 @@ public class CalculatorActivity extends AppCompatActivity {
         Classes_Attended=(TextInputLayout) findViewById(R.id.classesAttended_TextInputLayout);
         Classes_Conducted=(TextInputLayout) findViewById(R.id.classesHeld_TextInputLayout);
         Desired_Percentage=(TextInputLayout) findViewById(R.id.desiredPercent_TextInputLayout);
+
+        editClasses_Attended=(AppCompatEditText) findViewById(R.id.classesAttended_TextField);
+        editClasses_Conducted=(AppCompatEditText) findViewById(R.id.classesHeld_TextField);
+        editDesired_Percentage=(AppCompatEditText) findViewById(R.id.desiredPercent_TextField);
+
+        Intent intent = getIntent();
+        String conducted=intent.getStringExtra("attended");
+        String Held=intent.getStringExtra("held");
+
+        editClasses_Conducted.setText(Held);
+        editClasses_Attended.setText(conducted);
+        editDesired_Percentage.setText(getString(R.string.defaultPercentage));
 
         result=(AppCompatTextView)findViewById(R.id.resultView);
         result2=(AppCompatTextView)findViewById(R.id.resultView2);

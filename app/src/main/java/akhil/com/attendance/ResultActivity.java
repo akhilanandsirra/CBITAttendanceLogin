@@ -99,8 +99,8 @@ public class ResultActivity extends AppCompatActivity {
         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         savedUrl= loginPreferences.getString("url", null);
 
-        String classesHeld = intent.getStringExtra("classes1");
-        String classesAttended = intent.getStringExtra("classes2");
+        final String classesHeld = intent.getStringExtra("classes1");
+        final String classesAttended = intent.getStringExtra("classes2");
         //originalUrl=intent.getStringExtra("url");
 
         timeTable = intent.getStringArrayListExtra("timetable");
@@ -321,6 +321,8 @@ public class ResultActivity extends AppCompatActivity {
                 Intent intent=new Intent(ResultActivity.this, CalculatorActivity.class);
                 //intent.putExtra("Username",userName);
                 //intent.putExtra("Password",Password);
+                intent.putExtra("attended",classesAttended);
+                intent.putExtra("held",classesHeld);
                 startActivity(intent);
             }
         });
@@ -491,7 +493,7 @@ public class ResultActivity extends AppCompatActivity {
         }
         else{
             this.doublePressedBackExit = true;
-            Toast.makeText(getApplicationContext(), "Press again to exit", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Press again to logout", Toast.LENGTH_SHORT).show();
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {

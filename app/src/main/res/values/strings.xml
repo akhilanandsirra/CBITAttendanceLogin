@@ -24,4 +24,5 @@
     <string name="datewise_attendance">Datewise Attendance</string>
     <string name="today_s_time_table">Today\'s Time Table</string>
     <string name="stay_signed_in">Stay Signed In</string>
+    <string name="defaultPercentage">75</string>
 </resources>
