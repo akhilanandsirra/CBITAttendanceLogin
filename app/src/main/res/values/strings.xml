@@ -15,6 +15,7 @@
     <string name="errorInput">PLEASE ENTER ALL THREE FIELDS!</string>
     <string name="errorNumber">Classes attended is more</string>
     <string name="errorNumber2">than Classes conducted!</string>
+    <string name="errorHeld">Classes Held can\'t be zero!</string>
     <string name="errorpercent">Desired Percentage must be</string>
     <string name="errorpercent2">between 0 and 100!</string>
     <string name="errorHundred1">You can not achieve 100.00% attendance</string>

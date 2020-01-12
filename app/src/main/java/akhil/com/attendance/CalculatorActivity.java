@@ -72,6 +72,10 @@ public class CalculatorActivity extends AppCompatActivity {
                     result.setText(getString(R.string.errorInput));
                     result2.setText(null);
                 }
+                else if(classConducted.equals("0")){
+                    result.setText(getString(R.string.errorHeld));
+                    result2.setText(null);
+                }
                 else
                 {
                     classattended=Long.parseLong(classAttended);
