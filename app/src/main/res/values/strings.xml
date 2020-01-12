@@ -26,4 +26,10 @@
     <string name="today_s_time_table">Today\'s Time Table</string>
     <string name="stay_signed_in">Stay Signed In</string>
     <string name="defaultPercentage">75</string>
+    <string name="cbit_student_login">CBIT Student Login</string>
+    <string name="username">Username</string>
+    <string name="login_now">Login Now</string>
+    <string name="password">Password</string>
+    <string name="website">Website</string>
+    <string name="rate_us">Rate us!</string>
 </resources>

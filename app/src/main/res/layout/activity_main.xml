@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/roboto_condensed_bold"
-                android:text="CBIT Student Login"
+                android:text="@string/cbit_student_login"
                 android:textColor="@color/white"
                 android:textSize="30sp" />
 
@@ -77,7 +77,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_condensed_regular"
-                            android:hint="Username"
+                            android:hint="@string/username"
                             android:inputType="text"
                             android:paddingStart="15dp"
                             android:paddingEnd="15dp"
@@ -115,7 +115,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_condensed_regular"
-                            android:hint="Password"
+                            android:hint="@string/password"
                             android:inputType="textPassword"
                             android:paddingStart="15dp"
                             android:paddingEnd="15dp"
@@ -159,7 +159,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:paddingStart="70dp"
                 android:paddingEnd="70dp"
-                android:text="Login Now"
+                android:text="@string/login_now"
                 android:textAllCaps="false"
                 android:textColor="@color/white" />
 
@@ -185,7 +185,7 @@
             android:layout_alignParentStart="true"
             android:background="@drawable/ripple_borderless"
             android:fontFamily="@font/roboto_medium"
-            android:text="Website"
+            android:text="@string/website"
             android:textAllCaps="true"
             android:textColor="@color/white" />
 
@@ -197,7 +197,7 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/ripple_borderless"
             android:fontFamily="@font/roboto_medium"
-            android:text="Rate us!"
+            android:text="@string/rate_us"
             android:onClick="rateMe"
             android:textAllCaps="true"
             android:textColor="@color/white" />
