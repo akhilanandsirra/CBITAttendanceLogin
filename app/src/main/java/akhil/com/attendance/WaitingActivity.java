@@ -267,14 +267,14 @@ public class WaitingActivity extends AppCompatActivity {
 
                 runOnUiThread(new Runnable(){
                     public void run() {
-                        Toast.makeText(getApplicationContext(), "Session Timeout",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Slow internet connection or College server might be down, Try again after sometime",Toast.LENGTH_LONG).show();
                     }
                 });
                 Task.cancel(true);
                 finish();
             }
 
-            catch(IOException e) {
+            catch(IOException | RuntimeException e) {
                 runOnUiThread(new Runnable(){
                     public void run() {
                         Toast.makeText(getApplicationContext(), "No Internet Connection",Toast.LENGTH_LONG).show();
@@ -282,17 +282,7 @@ public class WaitingActivity extends AppCompatActivity {
                 });
                 Task.cancel(true);
                 finish();
-            }
-            catch(RuntimeException e){
-                runOnUiThread(new Runnable(){
-                    public void run() {
-                        Toast.makeText(getApplicationContext(), "No Internet Connection",Toast.LENGTH_LONG).show();
-                    }
-                });
-                Task.cancel(true);
-                finish();
-            }
-            catch(Exception e) {
+            } catch(Exception e) {
                 runOnUiThread(new Runnable(){
                     public void run() {
                         Toast.makeText(getApplicationContext(), "Percentage not available",Toast.LENGTH_LONG).show();
