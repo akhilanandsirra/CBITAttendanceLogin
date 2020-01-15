@@ -267,7 +267,7 @@ public class WaitingActivity extends AppCompatActivity {
 
                 runOnUiThread(new Runnable(){
                     public void run() {
-                        Toast.makeText(getApplicationContext(), "Slow internet connection or College server might be down, Try again after sometime",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Slow internet connection or College server might be down, Try again after sometime.",Toast.LENGTH_LONG).show();
                     }
                 });
                 Task.cancel(true);
@@ -285,7 +285,7 @@ public class WaitingActivity extends AppCompatActivity {
             } catch(Exception e) {
                 runOnUiThread(new Runnable(){
                     public void run() {
-                        Toast.makeText(getApplicationContext(), "Percentage not available",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Percentage not available.",Toast.LENGTH_LONG).show();
                     }
                 });
                 Task.cancel(true);

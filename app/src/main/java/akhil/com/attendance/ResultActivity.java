@@ -9,17 +9,21 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Point;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.airbnb.lottie.animation.content.Content;
@@ -58,6 +62,7 @@ public class ResultActivity extends AppCompatActivity {
     private Content Task;
     private SharedPreferences loginPreferences;
     private SharedPreferences.Editor loginPrefsEditor;
+    String classesHeld ,classesAttended;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +89,19 @@ public class ResultActivity extends AppCompatActivity {
         period6Status = (AppCompatTextView) findViewById(R.id.table2row7column2);
 
 
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+
+        if(width<900){
+            LinearLayout linearLayout1=findViewById(R.id.LinearLayout1);
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)linearLayout1.getLayoutParams();
+            params.setMargins(0, 45, 0, 0);
+            linearLayout1.setLayoutParams(params);
+        }
+
+
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         Intent intent = getIntent();
@@ -99,8 +117,8 @@ public class ResultActivity extends AppCompatActivity {
         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         savedUrl= loginPreferences.getString("url", null);
 
-        final String classesHeld = intent.getStringExtra("classes1");
-        final String classesAttended = intent.getStringExtra("classes2");
+        classesHeld = intent.getStringExtra("classes1");
+        classesAttended = intent.getStringExtra("classes2");
         //originalUrl=intent.getStringExtra("url");
 
         timeTable = intent.getStringArrayListExtra("timetable");
