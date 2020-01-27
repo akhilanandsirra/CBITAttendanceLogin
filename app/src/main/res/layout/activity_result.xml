@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_condensed_bold"
-                android:text="Your Attendance is"
+                android:text="@string/your_attendance_is"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -162,7 +162,7 @@
                             android:gravity="center"
                             android:background="@drawable/cell"
                             android:padding="3dp"
-                            android:text="Day/Date"
+                            android:text="@string/day_date"
                             android:textColor="@color/black"
                             android:textSize="14sp"
                             />
@@ -403,7 +403,7 @@
                             android:gravity="center"
                             android:background="@drawable/cell"
                             android:padding="3dp"
-                            android:text="Day/Date"
+                            android:text="@string/day_date"
                             android:textColor="@color/black"
                             android:textSize="14sp"
                             />
