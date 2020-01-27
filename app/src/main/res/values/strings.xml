@@ -32,4 +32,6 @@
     <string name="password">Password</string>
     <string name="website">Website</string>
     <string name="rate_us">Rate us!</string>
+    <string name="your_attendance_is">Your Attendance is</string>
+    <string name="day_date">Day/Date</string>
 </resources>

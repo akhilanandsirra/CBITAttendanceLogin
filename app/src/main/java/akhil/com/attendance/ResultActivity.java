@@ -438,7 +438,8 @@ public class ResultActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
                     }
                 });
-                Task.cancel(true);            }
+                Task.cancel(true);
+            }
             catch (Exception e) {
                 runOnUiThread(new Runnable() {
                     public void run() {
