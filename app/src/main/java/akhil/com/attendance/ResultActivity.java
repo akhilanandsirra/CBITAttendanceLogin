@@ -93,6 +93,15 @@ public class ResultActivity extends AppCompatActivity {
         Point size = new Point();
         display.getSize(size);
         int width = size.x;
+        int height = size.y;
+
+
+        if(height<1921){
+            LinearLayout linearLayout1=findViewById(R.id.LinearLayout1);
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)linearLayout1.getLayoutParams();
+            params.setMargins(0, 55, 0, 0);
+            linearLayout1.setLayoutParams(params);
+        }
 
         if(width<900){
             LinearLayout linearLayout1=findViewById(R.id.LinearLayout1);
