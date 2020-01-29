@@ -99,14 +99,14 @@ public class ResultActivity extends AppCompatActivity {
         if(height<1921){
             LinearLayout linearLayout1=findViewById(R.id.LinearLayout1);
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)linearLayout1.getLayoutParams();
-            params.setMargins(0, 55, 0, 0);
+            params.setMargins(0, 105, 0, 0);
             linearLayout1.setLayoutParams(params);
         }
 
         if(width<900){
             LinearLayout linearLayout1=findViewById(R.id.LinearLayout1);
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)linearLayout1.getLayoutParams();
-            params.setMargins(0, 45, 0, 0);
+            params.setMargins(0, 65, 0, 0);
             linearLayout1.setLayoutParams(params);
         }
 
