@@ -6,14 +6,13 @@ android {
         applicationId "akhil.com.attendance"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 11
-        versionName "2.3.1"
+        versionCode 12
+        versionName "2.3.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
-            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
