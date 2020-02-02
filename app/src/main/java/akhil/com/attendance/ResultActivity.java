@@ -11,11 +11,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.net.ConnectivityManager;
+import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;
@@ -551,7 +554,29 @@ public class ResultActivity extends AppCompatActivity {
 
     public boolean isConnected(){
         ConnectivityManager connectivityManager=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo=connectivityManager.getActiveNetworkInfo();
-        return networkInfo!=null && networkInfo.isConnected();
+
+        if (connectivityManager != null) {
+
+
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
+                if (capabilities != null) {
+                    if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                        return true;
+                    } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                        return true;
+                    }  else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)){
+                        return true;
+                    }
+                }
+            }
+
+            else {
+
+                NetworkInfo networkInfo=connectivityManager.getActiveNetworkInfo();
+                return networkInfo!=null && networkInfo.isConnected();
+            }
+        }
+        return false;
     }
 }
