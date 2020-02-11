@@ -6,6 +6,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -59,7 +60,7 @@ public class ResultActivity extends AppCompatActivity {
     ArrayList<String> timeTable = new ArrayList<>();
     ArrayList<String> dayWiseTable = new ArrayList<>();
     String date,originalUrl,savedUrl;
-    AppCompatButton websiteButton,calculatorButton;
+    AppCompatButton websiteButton,calculatorButton,syllabusButton,notesButton;
     boolean rememberMe,refresh;
     boolean doublePressedBackExit = false;
     private Content Task;
@@ -112,7 +113,6 @@ public class ResultActivity extends AppCompatActivity {
             params.setMargins(0, 65, 0, 0);
             linearLayout1.setLayoutParams(params);
         }
-
 
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
@@ -357,6 +357,22 @@ public class ResultActivity extends AppCompatActivity {
             }
         });
 
+        syllabusButton=(AppCompatButton)findViewById(R.id.syllabus_button);
+        syllabusButton.setOnLongClickListener(new View.OnLongClickListener() {
+            public boolean onLongClick(View arg0) {
+                Toast.makeText(getApplicationContext(), "Syllabus Book" ,Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
+        notesButton=(AppCompatButton)findViewById(R.id.notes_button);
+        notesButton.setOnLongClickListener(new View.OnLongClickListener() {
+            public boolean onLongClick(View arg0) {
+                Toast.makeText(getApplicationContext(), "Notes" ,Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
         Task= (Content) new Content().execute();
         if(savedUrl!=null){
             Task.cancel(true);
@@ -364,6 +380,7 @@ public class ResultActivity extends AppCompatActivity {
     }
 
 
+    @SuppressLint("StaticFieldLeak")
     private class Content extends AsyncTask<Void, Void, Void> {
 
         @Override
@@ -552,7 +569,12 @@ public class ResultActivity extends AppCompatActivity {
         }
     }
 
-    public boolean isConnected(){
+    public void syllabus(View v) {
+        Intent intent=new Intent(ResultActivity.this, SyllabusActivity.class);
+        startActivity(intent);
+    }
+
+    /*public boolean isConnected(){
         ConnectivityManager connectivityManager=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 
         if (connectivityManager != null) {
@@ -578,5 +600,14 @@ public class ResultActivity extends AppCompatActivity {
             }
         }
         return false;
+    }*/
+
+    public boolean isConnected(){
+        ConnectivityManager connectivityManager=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo= null;
+        if (connectivityManager != null) {
+            networkInfo = connectivityManager.getActiveNetworkInfo();
+        }
+        return networkInfo!=null && networkInfo.isConnected();
     }
 }

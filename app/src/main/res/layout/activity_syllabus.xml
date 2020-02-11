@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/grad_bg"
+    android:fitsSystemWindows="true"
+    tools:context="akhil.com.attendance.SyllabusActivity"
+    android:id="@+id/syllabus_activity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/calculatorLogo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/notes" />
+        <RelativeLayout
+            android:id="@+id/syllabusLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/calculatorLogo">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/syllabusText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_condensed_bold"
+                android:text="Syllabus Book"
+                android:textColor="@color/white"
+                android:textSize="28sp"/>
+
+            <LinearLayout
+                android:id="@+id/syllabusLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/syllabusText"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/spinner_background"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    >
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/year"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dialog"
+                        style="@style/mySpinnerItemStyle"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/spinner_background"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/semester"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dialog"
+                    style="@style/mySpinnerItemStyle"
+                    />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/resultView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/syllabusLayout2"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="20dp"
+                android:text="SELECT ALL THE FIELDS"
+                android:fontFamily="@font/roboto_condensed_light"
+                android:textSize="17sp"/>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/syllabus_button"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@id/resultView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/ripple"
+                android:fontFamily="@font/roboto_medium"
+                android:paddingStart="70dp"
+                android:paddingEnd="70dp"
+                android:text="Open"
+                android:onClick="syllabusPDF"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -60,6 +60,7 @@ public class WaitingActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class Content extends AsyncTask<Void, Void, Void> {
 
         @Override
@@ -351,12 +352,10 @@ public class WaitingActivity extends AppCompatActivity {
         this.finish();
     }*/
 
-    public boolean isConnected(){
+    /*public boolean isConnected(){
         ConnectivityManager connectivityManager=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 
         if (connectivityManager != null) {
-
-
             if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
                 if (capabilities != null) {
@@ -376,6 +375,15 @@ public class WaitingActivity extends AppCompatActivity {
             }
         }
         return false;
+    }*/
+
+    public boolean isConnected(){
+        ConnectivityManager connectivityManager=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo= null;
+        if (connectivityManager != null) {
+            networkInfo = connectivityManager.getActiveNetworkInfo();
+        }
+        return networkInfo!=null && networkInfo.isConnected();
     }
 
 }

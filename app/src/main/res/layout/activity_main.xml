@@ -204,4 +204,45 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/rellay3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/notes_button"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:background="@drawable/ripple_round"
+            android:drawableStart="@drawable/notes"
+            android:padding="5dp"
+            android:onClick="syllabus"
+            />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/syllabus_button"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:background="@drawable/ripple_round"
+            android:drawableStart="@drawable/syllabus_book"
+            android:padding="5dp"
+            android:onClick="syllabus"
+            />
+
+    </RelativeLayout>
+
+
 </RelativeLayout>

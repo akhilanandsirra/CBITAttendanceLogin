@@ -34,4 +34,42 @@
     <string name="rate_us">Rate us!</string>
     <string name="your_attendance_is">Your Attendance is</string>
     <string name="day_date">Day/Date</string>
+    <string-array name="branch">
+        <item>Select Branch</item>
+        <item>Bio-Tech – BOT</item>
+        <item>Computer Sci. -CSE</item>
+        <item>Info. Tech – ITD</item>
+        <item>Electronics – ECE</item>
+        <item>Civil – CED</item>
+        <item>Chemical – CHE</item>
+        <item>Electrical – EEE</item>
+        <item>Mechanical – MED</item>
+        <item>Production – PED</item>
+        <item>PG Syllabus</item>
+    </string-array>
+    <string-array name="defaultYear">
+        <item>Select Semester</item>
+    </string-array>
+    <string-array name="year">
+        <item>Select Semester</item>
+        <item>Sem 1 &amp; 2</item>
+        <item>Sem 3 &amp; 4</item>
+        <item>Sem 5 &amp; 6</item>
+        <item>Sem 7 &amp; 8</item>
+    </string-array>
+    <string-array name="pg">
+        <item>Select PG Syllabus</item>
+        <item>MTech CSE</item>
+        <item>ME CIVIL</item>
+        <item>ME CAD CAM</item>
+        <item>ME THERMAL Engg.</item>
+        <item>ME EEE (PSPE)</item>
+        <item>ME ECE (Comm.Engg.)</item>
+        <item>ME ECE (ES &amp; VLSI)</item>
+        <item>MTech IT (CNIS)</item>
+        <item>MCA I and II Semesters</item>
+        <item>MCA III and IV Semesters</item>
+        <item>MCA V and VI Semesters</item>
+        <item>MBA I and II Semesters</item>
+    </string-array>
 </resources>
