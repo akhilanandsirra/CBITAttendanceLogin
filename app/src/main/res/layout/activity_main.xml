@@ -224,7 +224,7 @@
             android:background="@drawable/ripple_round"
             android:drawableStart="@drawable/notes"
             android:padding="5dp"
-            android:onClick="syllabus"
+            android:onClick="notes"
             />
 
 

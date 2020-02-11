@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/grad_bg"
     android:fitsSystemWindows="true"
-    tools:context="akhil.com.attendance.SyllabusActivity"
-    android:id="@+id/syllabus_activity">
+    tools:context="akhil.com.attendance.NotesActivity"
+    android:id="@+id/notes_activity">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -21,28 +21,28 @@
             android:layout_height="80dp"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/syllabus_book" />
+            android:src="@drawable/notes" />
         <RelativeLayout
-            android:id="@+id/syllabusLayout"
+            android:id="@+id/notesLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/calculatorLogo">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/syllabusText"
+                android:id="@+id/notesText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/roboto_condensed_bold"
-                android:text="Syllabus Book"
+                android:text="Notes Section"
                 android:textColor="@color/white"
                 android:textSize="28sp"/>
 
             <LinearLayout
-                android:id="@+id/syllabusLayout2"
+                android:id="@+id/notesLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/syllabusText"
+                android:layout_below="@id/notesText"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
@@ -75,12 +75,12 @@
                     android:paddingBottom="5dp">
 
                     <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/semester"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:spinnerMode="dialog"
-                    style="@style/mySpinnerItemStyle"
-                    />
+                        android:id="@+id/semester"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dialog"
+                        style="@style/mySpinnerItemStyle"
+                        />
 
                 </LinearLayout>
 
@@ -90,7 +90,7 @@
                 android:id="@+id/resultView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/syllabusLayout2"
+                android:layout_below="@id/notesLayout2"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="20dp"
                 android:text="SELECT ALL THE FIELDS"
@@ -99,7 +99,7 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/syllabus_button"
+                android:id="@+id/notes_button"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_below="@id/resultView"
@@ -110,7 +110,7 @@
                 android:paddingStart="70dp"
                 android:paddingEnd="70dp"
                 android:text="Open"
-                android:onClick="syllabusPDF"
+                android:onClick="notesDrive"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 />

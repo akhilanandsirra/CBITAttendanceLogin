@@ -665,7 +665,7 @@
                 android:background="@drawable/ripple_round"
                 android:drawableStart="@drawable/notes_black"
                 android:padding="5dp"
-                android:onClick="syllabus"
+                android:onClick="notes"
                 />
 
             <androidx.appcompat.widget.AppCompatButton

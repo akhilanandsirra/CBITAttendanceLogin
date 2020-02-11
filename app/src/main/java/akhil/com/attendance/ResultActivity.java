@@ -368,7 +368,7 @@ public class ResultActivity extends AppCompatActivity {
         notesButton=(AppCompatButton)findViewById(R.id.notes_button);
         notesButton.setOnLongClickListener(new View.OnLongClickListener() {
             public boolean onLongClick(View arg0) {
-                Toast.makeText(getApplicationContext(), "Notes" ,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Notes Section" ,Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
@@ -571,6 +571,11 @@ public class ResultActivity extends AppCompatActivity {
 
     public void syllabus(View v) {
         Intent intent=new Intent(ResultActivity.this, SyllabusActivity.class);
+        startActivity(intent);
+    }
+
+    public void notes(View v) {
+        Intent intent=new Intent(ResultActivity.this, NotesActivity.class);
         startActivity(intent);
     }
 
