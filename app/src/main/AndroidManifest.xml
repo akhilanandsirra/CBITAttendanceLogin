@@ -14,8 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NotesActivity"></activity>
-        <activity android:name=".SyllabusActivity" />
+        <activity android:name=".NotesActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".SyllabusActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".CalculatorActivity"
             android:screenOrientation="portrait" />

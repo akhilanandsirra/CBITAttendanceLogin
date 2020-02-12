@@ -6,8 +6,8 @@ android {
         applicationId "akhil.com.attendance"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 13
-        versionName "3.0"
+        versionCode 15
+        versionName "3.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

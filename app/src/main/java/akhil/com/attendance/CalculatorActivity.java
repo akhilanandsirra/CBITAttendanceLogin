@@ -107,11 +107,14 @@ public class CalculatorActivity extends AppCompatActivity {
                                 int i;
                                 d = ((double) classattended/ (double) classconducted) * 100;
                                 double z=(double) desiredpercentage;
-                                for (i = 1; d >desiredpercentage; i++) {
+                                for (i = 0; d >desiredpercentage; i++) {
                                     if(Math.ceil(d)==desiredpercentage)
                                         break;
                                     d = ((double) (classattended)/ (double) (classconducted + i)) * 100;
                                     bunk = i;
+                                    if(d<desiredpercentage){
+                                        bunk=bunk-1;
+                                        break;}
                                     if(Math.ceil(d)==desiredpercentage)
                                         break;
                                 }
@@ -119,7 +122,7 @@ public class CalculatorActivity extends AppCompatActivity {
                             }
                             if(percent<desiredpercentage){
                                 int i;
-                                for (i = 1; y <=desiredpercentage; i++) {
+                                for (i = 0; y <=desiredpercentage; i++) {
                                     if(y==desiredpercentage)
                                         break;
                                     y = ((double)(classattended + i )/ (double) (classconducted + i)) * 100;
