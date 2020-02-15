@@ -14,10 +14,12 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.john.waveview.WaveView;
 
 public class CalculatorActivity extends AppCompatActivity {
 
     private TextInputLayout Classes_Attended,Classes_Conducted,Desired_Percentage;
+    WaveView waveView;
     private AppCompatEditText editClasses_Attended,editClasses_Conducted,editDesired_Percentage;
     AppCompatButton CalculateButton;
     private AppCompatTextView result,result2;
@@ -99,6 +101,10 @@ public class CalculatorActivity extends AppCompatActivity {
                         }
                         else {
                             result.setText(String.format(getString(R.string.result_percent), percent));
+                            waveView = (WaveView) findViewById(R.id.wave_view);
+                            ProgressBarAnimation anim = new ProgressBarAnimation(waveView, 0, (float)percent);
+                            anim.setDuration(1000);
+                            waveView.startAnimation(anim);
                             if(percent==desiredpercentage){
                                 result2.setText(null);
                             }

@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:wave="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,6 +10,17 @@
     android:fitsSystemWindows="true"
     tools:context="akhil.com.attendance.CalculatorActivity"
     android:id="@+id/calculate_activity">
+
+    <com.john.waveview.WaveView
+        android:id="@+id/wave_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        wave:above_wave_color="@android:color/white"
+        wave:blow_wave_color="@android:color/white"
+        wave:progress="0"
+        wave:wave_height="large"
+        wave:wave_hz="normal"
+        wave:wave_length="large" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
