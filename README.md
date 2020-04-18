@@ -38,14 +38,10 @@ Built using Android Studio, Java, XML.
 
 **Refresh.** You don’t have to close the app and open each time to check your updated attendance, just click on the refresh button.
 
-## Syllabus Section
+## Syllabus Section & Notes Section
 
-<a href="https://imgur.com/2ZYa9mf"><img src="https://i.imgur.com/2ZYa9mf.gif" height="600"/></a>
 
 **Check your Syllabus.** Tired of searching for syllabus copy? View all the syllabus books in one place. Now your syllabus copy is just one click away.
 
-## Notes Section
-
-<a href="https://imgur.com/vPlLVw6"><img src="https://i.imgur.com/vPlLVw6.gif" title="source: imgur.com" /></a>
 
 **Notes Section.** Students can find notes for all their subjects relevant to their syllabus. Wish to list your respective department notes? 
