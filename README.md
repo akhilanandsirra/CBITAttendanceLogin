@@ -16,12 +16,6 @@ Built using **Android Studio, Java, XML**
 
 **One Time Login.** Using the remember me option you can always stay logged in, even if you close the app.
 
-## Visit Website
-
-<a href="https://imgur.com/5FZUtgU"><img src="https://i.imgur.com/5FZUtgU.gif" height="600"/></a>
-
-**Visit your website.** Your Student info site is just one click away with this.
-
 ## Attend/Bunk Calculator 
 
 <a href="https://imgur.com/j4pP79d"><img src="https://i.imgur.com/j4pP79d.gif" height="600"/></a>
@@ -31,6 +25,12 @@ Built using **Android Studio, Java, XML**
 ' + ' button is for attending classes
 
 ' - ' button is for bunking classes
+
+## Visit Website
+
+<a href="https://imgur.com/5FZUtgU"><img src="https://i.imgur.com/5FZUtgU.gif" height="600"/></a>
+
+**Visit your website.** Your Student info site is just one click away with this.
 
 ## Refresh
 
