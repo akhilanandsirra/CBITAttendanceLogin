@@ -20,7 +20,7 @@ Built using **Android Studio, Java, XML**
 
 <img src="https://user-images.githubusercontent.com/52598978/79836815-47d71100-83ce-11ea-8f6f-50ba60b6aeff.jpg" height="600"/>  <img src="https://user-images.githubusercontent.com/52598978/79836801-44438a00-83ce-11ea-994f-0df99b4eb7da.jpg" height="600"/>
 
-Dark mode available.
+**Dark mode.** Save battery on phones with AMOLED Display, Doesn’t strain your eyes too much at night.
 
 ## Attend/Bunk Calculator 
 
