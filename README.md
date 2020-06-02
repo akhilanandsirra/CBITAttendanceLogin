@@ -32,6 +32,7 @@ Built using **Android Studio, Java, XML**
 
 ' - ' button is for bunking classes
 
+
 ## Visit Website
 
 <a href="https://imgur.com/5FZUtgU"><img src="https://i.imgur.com/5FZUtgU.gif" height="600"/></a>
