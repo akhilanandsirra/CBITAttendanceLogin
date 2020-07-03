@@ -2,7 +2,7 @@
 
 Designed, developed and published an *android application* with Material UI for scraping Student information from CBIT student website using *jsoup* library and animations using *Lottie*. CBIT Student App is an easy-to-use app that saves you time and keeps your attendance in check.
 
-Made attendance checking time 80% faster from **15s** to **3s.**
+Decreased student login time by **80%**(15s to 3s) by directly scraping the login URL.
 
 Built using **Android Studio, Java, XML**
 
