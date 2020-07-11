@@ -4,6 +4,8 @@ Designed, developed and published an *android application* with Material UI for 
 
 Decreased student login time by **80%**(15s to 3s) by directly scraping the login URL.
 
+Added notes and syllabus sections of each branch and semesters for easy and faster accessibility.
+
 Built using **Android Studio, Java, XML**
 
 [Playstore Link](https://play.google.com/store/apps/details?id=akhil.com.attendance)
